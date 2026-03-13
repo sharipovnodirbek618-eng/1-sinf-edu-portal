@@ -23,6 +23,12 @@
       --white: #ffffff;
       --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
       --radius: 16px;
+      --danger-bg: #ffebee;
+      --danger-text: #b71c1c;
+      --success-bg: #e8f5e9;
+      --success-text: #1b5e20;
+      --warning-bg: #fff8e1;
+      --warning-text: #8d6e00;
     }
 
     html {
@@ -37,7 +43,7 @@
 
     .container {
       width: 92%;
-      max-width: 1200px;
+      max-width: 1250px;
       margin: 0 auto;
     }
 
@@ -76,6 +82,7 @@
       justify-content: center;
       font-size: 34px;
       font-weight: bold;
+      flex-shrink: 0;
     }
 
     .brand h1 {
@@ -126,6 +133,16 @@
       color: var(--primary);
     }
 
+    .btn-danger {
+      background: #ef5350;
+      color: white;
+    }
+
+    .btn-print {
+      background: #6d4c41;
+      color: white;
+    }
+
     nav {
       background: #0b3d91;
     }
@@ -161,7 +178,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 30px;
       align-items: center;
       width: 100%;
@@ -189,9 +206,9 @@
 
     .hero-stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      max-width: 760px;
+      max-width: 900px;
     }
 
     .stat {
@@ -199,11 +216,18 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 14px;
       padding: 16px;
+      text-align: center;
     }
 
     .stat h3 {
       font-size: 28px;
       margin-bottom: 6px;
+    }
+
+    .stat p {
+      font-size: 14px;
+      margin: 0;
+      color: #eff6ff;
     }
 
     .hero-card,
@@ -213,7 +237,8 @@
     .form-card,
     .lookup-box,
     .contact-card,
-    .history-card {
+    .history-card,
+    .table-card {
       background: white;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
@@ -226,7 +251,8 @@
     .info-card h3,
     .form-card h3,
     .contact-card h3,
-    .history-card h3 {
+    .history-card h3,
+    .table-card h3 {
       color: var(--primary);
       margin-bottom: 12px;
       font-size: 22px;
@@ -236,6 +262,10 @@
     .info-card ul {
       padding-left: 20px;
       color: var(--muted);
+    }
+
+    .info-card ul li {
+      margin-bottom: 8px;
     }
 
     section {
@@ -260,7 +290,8 @@
     .features,
     .steps,
     .footer-grid,
-    .history-grid {
+    .history-grid,
+    .stats-panel {
       display: grid;
       gap: 22px;
     }
@@ -271,6 +302,30 @@
 
     .steps {
       grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stats-panel {
+      grid-template-columns: repeat(4, 1fr);
+      margin-bottom: 24px;
+    }
+
+    .mini-stat {
+      background: white;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .mini-stat h4 {
+      color: var(--primary);
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+
+    .mini-stat p {
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .step-card {
@@ -295,6 +350,11 @@
       grid-template-columns: 1.1fr 0.9fr;
       gap: 28px;
       align-items: start;
+    }
+
+    .form-card p {
+      color: var(--muted);
+      margin-bottom: 22px;
     }
 
     .form-grid {
@@ -347,11 +407,21 @@
       gap: 20px;
     }
 
-    .lookup-actions {
+    .lookup-actions,
+    .table-actions {
       display: flex;
       gap: 12px;
       margin-top: 14px;
       flex-wrap: wrap;
+    }
+
+    .contact-card p {
+      margin-bottom: 12px;
+    }
+
+    .contact-card input,
+    .contact-card textarea {
+      margin-bottom: 14px;
     }
 
     .history-grid {
@@ -362,6 +432,88 @@
       color: var(--muted);
       display: block;
       margin-top: 8px;
+    }
+
+    .feature-card:hover,
+    .step-card:hover,
+    .info-card:hover,
+    .history-card:hover,
+    .mini-stat:hover {
+      transform: translateY(-4px);
+      transition: 0.3s;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1000px;
+    }
+
+    th, td {
+      border-bottom: 1px solid #e5e7eb;
+      padding: 12px;
+      text-align: left;
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f5ff;
+      color: var(--primary);
+    }
+
+    .status-badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .status-qabul {
+      background: #e8f5e9;
+      color: #1b5e20;
+    }
+
+    .status-korib {
+      background: #fff8e1;
+      color: #8d6e00;
+    }
+
+    .status-tasdiq {
+      background: #e3f2fd;
+      color: #0d47a1;
+    }
+
+    .status-bekor {
+      background: #ffebee;
+      color: #b71c1c;
+    }
+
+    .action-select {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+    }
+
+    .small-btn {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .small-danger {
+      background: #ef5350;
+      color: white;
     }
 
     footer {
@@ -400,7 +552,8 @@
     @media (max-width: 1024px) {
       .features,
       .steps,
-      .history-grid {
+      .history-grid,
+      .stats-panel {
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -433,7 +586,8 @@
       .features,
       .steps,
       .history-grid,
-      .form-grid {
+      .form-grid,
+      .stats-panel {
         grid-template-columns: 1fr;
       }
 
@@ -443,6 +597,22 @@
 
       nav ul {
         gap: 14px;
+      }
+    }
+
+    @media print {
+      header, nav, .hero, #imkoniyatlar, #bosqichlar, #boglanish, footer,
+      .lookup-actions, .table-actions, .btn, .small-btn {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+      }
+
+      .table-card, .form-card, .lookup-box, .info-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
       }
     }
   </style>
@@ -471,7 +641,7 @@
         <li><a href="#bosqichlar">Bosqichlar</a></li>
         <li><a href="#ariza">Online ariza</a></li>
         <li><a href="#tekshirish">Ariza tekshirish</a></li>
-        <li><a href="#tarix">Arizalar</a></li>
+        <li><a href="#jadval">Jadval</a></li>
         <li><a href="#boglanish">Bog'lanish</a></li>
       </ul>
     </nav>
@@ -501,6 +671,10 @@
             <h3>24/7</h3>
             <p>Onlayn qabul</p>
           </div>
+          <div class="stat">
+            <h3>Admin</h3>
+            <p>Jadval ko‘rinishi</p>
+          </div>
         </div>
       </div>
 
@@ -511,7 +685,7 @@
           <li>Online ariza yuborish</li>
           <li>Avtomatik ID yaratish</li>
           <li>ID orqali arizani qidirish</li>
-          <li>Arizalarni saqlash</li>
+          <li>Status o‘zgartirish va o‘chirish</li>
         </ul>
       </div>
     </div>
@@ -536,8 +710,8 @@
           <p>Har bir ariza uchun maxsus ID yaratiladi.</p>
         </div>
         <div class="feature-card">
-          <h3>Qayta tekshirish</h3>
-          <p>Ariza ID orqali ma'lumotni topish mumkin.</p>
+          <h3>Jadval boshqaruvi</h3>
+          <p>Arizalarni jadvalda ko‘rish, qidirish va boshqarish mumkin.</p>
         </div>
       </div>
     </div>
@@ -687,9 +861,64 @@
         <div class="lookup-actions">
           <button class="btn btn-primary" type="button" id="lookupBtn">Tekshirish</button>
           <button class="btn btn-secondary" type="button" id="showAllBtn">So'nggi arizalar</button>
+          <button class="btn btn-print" type="button" id="printBtn">Print</button>
         </div>
 
         <div id="lookupResult" class="lookup-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="jadval">
+    <div class="container">
+      <h2 class="section-title">Arizalar boshqaruvi</h2>
+      <p class="section-subtitle">Jadval ko‘rinishida arizalarni ko‘rish, qidirish, status berish va o‘chirish mumkin.</p>
+
+      <div class="stats-panel">
+        <div class="mini-stat">
+          <h4 id="totalCount">0</h4>
+          <p>Jami arizalar</p>
+        </div>
+        <div class="mini-stat">
+          <h4 id="newCount">0</h4>
+          <p>Qabul qilindi</p>
+        </div>
+        <div class="mini-stat">
+          <h4 id="reviewCount">0</h4>
+          <p>Ko‘rib chiqilmoqda</p>
+        </div>
+        <div class="mini-stat">
+          <h4 id="approvedCount">0</h4>
+          <p>Tasdiqlangan</p>
+        </div>
+      </div>
+
+      <div class="table-card">
+        <h3>Arizalar jadvali</h3>
+
+        <div class="table-actions">
+          <input type="text" id="searchInput" placeholder="ID, ism, viloyat, maktab bo‘yicha qidirish..." />
+          <button class="btn btn-secondary" type="button" id="clearAllBtn">Hammasini o‘chirish</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Bola</th>
+                <th>Hudud</th>
+                <th>Maktab</th>
+                <th>Ota-ona</th>
+                <th>Telefon</th>
+                <th>Status</th>
+                <th>Sana</th>
+                <th>Amal</th>
+              </tr>
+            </thead>
+            <tbody id="applicationsTableBody"></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
@@ -739,7 +968,7 @@
         <p><a href="#bosh">Bosh sahifa</a></p>
         <p><a href="#ariza">Ariza topshirish</a></p>
         <p><a href="#tekshirish">Ariza tekshirish</a></p>
-        <p><a href="#boglanish">Bog'lanish</a></p>
+        <p><a href="#jadval">Jadval</a></p>
       </div>
 
       <div>
@@ -829,6 +1058,8 @@
       }
     };
 
+    const STORAGE_KEY = "edu_portal_applications";
+
     const regionSelect = document.getElementById("region");
     const districtSelect = document.getElementById("district");
     const schoolSelect = document.getElementById("school");
@@ -836,11 +1067,18 @@
     const resultBox = document.getElementById("result");
     const lookupBtn = document.getElementById("lookupBtn");
     const showAllBtn = document.getElementById("showAllBtn");
+    const printBtn = document.getElementById("printBtn");
     const lookupId = document.getElementById("lookupId");
     const lookupResult = document.getElementById("lookupResult");
     const historyGrid = document.getElementById("historyGrid");
+    const tableBody = document.getElementById("applicationsTableBody");
+    const searchInput = document.getElementById("searchInput");
+    const clearAllBtn = document.getElementById("clearAllBtn");
 
-    const STORAGE_KEY = "edu_portal_applications";
+    const totalCount = document.getElementById("totalCount");
+    const newCount = document.getElementById("newCount");
+    const reviewCount = document.getElementById("reviewCount");
+    const approvedCount = document.getElementById("approvedCount");
 
     function populateRegions() {
       regionSelect.innerHTML = '<option value="">Viloyatni tanlang</option>';
@@ -913,6 +1151,20 @@
       return "EDU-" + Math.floor(100000 + Math.random() * 900000);
     }
 
+    function statusClass(status) {
+      if (status === "Qabul qilindi") return "status-qabul";
+      if (status === "Ko'rib chiqilmoqda") return "status-korib";
+      if (status === "Tasdiqlandi") return "status-tasdiq";
+      return "status-bekor";
+    }
+
+    function updateCounters(applications) {
+      totalCount.textContent = applications.length;
+      newCount.textContent = applications.filter(a => a.status === "Qabul qilindi").length;
+      reviewCount.textContent = applications.filter(a => a.status === "Ko'rib chiqilmoqda").length;
+      approvedCount.textContent = applications.filter(a => a.status === "Tasdiqlandi").length;
+    }
+
     function renderHistory() {
       const applications = getApplications().slice().reverse();
       historyGrid.innerHTML = "";
@@ -935,11 +1187,89 @@
           <p><strong>Bola:</strong> ${item.childName}</p>
           <p><strong>Hudud:</strong> ${item.region}, ${item.district}</p>
           <p><strong>Maktab:</strong> ${item.school}</p>
-          <p><strong>Holat:</strong> Qabul qilindi</p>
+          <p><strong>Status:</strong> ${item.status}</p>
           <small>${item.createdAt}</small>
         `;
         historyGrid.appendChild(card);
       });
+    }
+
+    function renderTable(filter = "") {
+      const applications = getApplications();
+      tableBody.innerHTML = "";
+
+      const filtered = applications.filter((item) => {
+        const text = (
+          item.applicationId + " " +
+          item.childName + " " +
+          item.region + " " +
+          item.district + " " +
+          item.school + " " +
+          item.parentName
+        ).toLowerCase();
+
+        return text.includes(filter.toLowerCase());
+      });
+
+      if (!filtered.length) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="9">Arizalar topilmadi.</td>
+          </tr>
+        `;
+        updateCounters(applications);
+        return;
+      }
+
+      filtered.forEach((item) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${item.applicationId}</td>
+          <td>${item.childName}</td>
+          <td>${item.region}<br>${item.district}</td>
+          <td>${item.school}</td>
+          <td>${item.parentName}</td>
+          <td>${item.phone}</td>
+          <td>
+            <span class="status-badge ${statusClass(item.status)}">${item.status}</span>
+            <br><br>
+            <select class="action-select" onchange="changeStatus('${item.applicationId}', this.value)">
+              <option value="Qabul qilindi" ${item.status === "Qabul qilindi" ? "selected" : ""}>Qabul qilindi</option>
+              <option value="Ko'rib chiqilmoqda" ${item.status === "Ko'rib chiqilmoqda" ? "selected" : ""}>Ko'rib chiqilmoqda</option>
+              <option value="Tasdiqlandi" ${item.status === "Tasdiqlandi" ? "selected" : ""}>Tasdiqlandi</option>
+              <option value="Bekor qilindi" ${item.status === "Bekor qilindi" ? "selected" : ""}>Bekor qilindi</option>
+            </select>
+          </td>
+          <td>${item.createdAt}</td>
+          <td>
+            <button class="small-btn small-danger" onclick="deleteApplication('${item.applicationId}')">O'chirish</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+
+      updateCounters(applications);
+    }
+
+    function changeStatus(id, newStatus) {
+      const applications = getApplications();
+      const found = applications.find((item) => item.applicationId === id);
+      if (found) {
+        found.status = newStatus;
+        saveApplications(applications);
+        renderHistory();
+        renderTable(searchInput.value);
+      }
+    }
+
+    function deleteApplication(id) {
+      const ok = confirm("Bu arizani o'chirmoqchimisiz?");
+      if (!ok) return;
+
+      const applications = getApplications().filter((item) => item.applicationId !== id);
+      saveApplications(applications);
+      renderHistory();
+      renderTable(searchInput.value);
     }
 
     admissionForm.addEventListener("submit", function (e) {
@@ -957,7 +1287,8 @@
         phone: document.getElementById("phone").value.trim(),
         address: document.getElementById("address").value.trim(),
         message: document.getElementById("message").value.trim(),
-        createdAt: new Date().toLocaleString("uz-UZ")
+        createdAt: new Date().toLocaleString("uz-UZ"),
+        status: "Qabul qilindi"
       };
 
       if (
@@ -978,7 +1309,7 @@
         return;
       }
 
-      const phoneRegex = /^[+]?[0-9\\s-]{9,20}$/;
+      const phoneRegex = /^[+]?[0-9\s-]{9,20}$/;
       if (!phoneRegex.test(application.phone)) {
         resultBox.style.display = "block";
         resultBox.style.background = "#ffebee";
@@ -1006,6 +1337,7 @@
         Mas'ul ota-ona: ${application.parentName}<br>
         Telefon: ${application.phone}<br>
         Manzil: ${application.address}<br>
+        Status: ${application.status}<br>
         Qo'shimcha ma'lumot: ${application.message || "Kiritilmagan"}
       `;
 
@@ -1015,6 +1347,7 @@
       resetSelect(districtSelect, "Avval viloyatni tanlang");
       resetSelect(schoolSelect, "Avval tumanni tanlang");
       renderHistory();
+      renderTable(searchInput.value);
     });
 
     lookupBtn.addEventListener("click", function () {
@@ -1052,18 +1385,36 @@
         Mas'ul ota-ona: ${found.parentName}<br>
         Telefon: ${found.phone}<br>
         Manzil: ${found.address}<br>
-        Holat: Qabul qilindi<br>
+        Holat: ${found.status}<br>
         Sana: ${found.createdAt}
       `;
     });
 
     showAllBtn.addEventListener("click", function () {
-      document.getElementById("tarix").scrollIntoView({ behavior: "smooth" });
+      document.getElementById("jadval").scrollIntoView({ behavior: "smooth" });
+    });
+
+    printBtn.addEventListener("click", function () {
+      window.print();
+    });
+
+    searchInput.addEventListener("input", function () {
+      renderTable(this.value);
+    });
+
+    clearAllBtn.addEventListener("click", function () {
+      const ok = confirm("Barcha arizalarni o'chirmoqchimisiz?");
+      if (!ok) return;
+      localStorage.removeItem(STORAGE_KEY);
+      renderHistory();
+      renderTable();
+      lookupResult.style.display = "none";
+      resultBox.style.display = "none";
     });
 
     populateRegions();
     renderHistory();
+    renderTable();
   </script>
 </body>
 </html>
-
