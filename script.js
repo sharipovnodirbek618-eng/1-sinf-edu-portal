@@ -12,6 +12,8 @@ const historyGrid = document.getElementById("historyGrid");
 const STORAGE_KEY = "edu_portal_applications";
 
 function populateRegions() {
+  regionSelect.innerHTML = '<option value="">Viloyatni tanlang</option>';
+
   Object.keys(schoolData).forEach((region) => {
     const option = document.createElement("option");
     option.value = region;
@@ -79,6 +81,10 @@ function saveApplications(applications) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(applications));
 }
 
+function createApplicationId() {
+  return "EDU-" + Math.floor(100000 + Math.random() * 900000);
+}
+
 function renderHistory() {
   const applications = getApplications().slice().reverse();
   historyGrid.innerHTML = "";
@@ -112,7 +118,7 @@ admissionForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
   const application = {
-    applicationId: "EDU-" + Math.floor(100000 + Math.random() * 900000),
+    applicationId: createApplicationId(),
     region: document.getElementById("region").value.trim(),
     district: document.getElementById("district").value.trim(),
     school: document.getElementById("school").value.trim(),
@@ -214,6 +220,11 @@ lookupBtn.addEventListener("click", function () {
     Viloyat: ${found.region}<br>
     Tuman / shahar: ${found.district}<br>
     Maktab: ${found.school}<br>
+    Tug'ilgan sana: ${found.birthDate}<br>
+    Jinsi: ${found.gender}<br>
+    Mas'ul ota-ona: ${found.parentName}<br>
+    Telefon: ${found.phone}<br>
+    Manzil: ${found.address}<br>
     Holat: Qabul qilindi<br>
     Sana: ${found.createdAt}
   `;
