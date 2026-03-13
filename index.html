@@ -4,343 +4,299 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1-Sinf Edu Portal</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    :root {
+      --primary: #0d47a1;
+      --secondary: #1565c0;
+      --accent: #43a047;
+      --accent-dark: #2e7d32;
+      --bg: #f4f7fc;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(rgba(13, 71, 161, 0.55), rgba(13, 71, 161, 0.55)),
+        url("https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fff, #dbeafe);
+      color: #0d47a1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .brand h1 {
+      font-size: 34px;
+      margin-bottom: 4px;
+    }
+
+    .brand p {
+      color: #e5efff;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-text h2 {
+      font-size: 56px;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .hero-text p {
+      font-size: 21px;
+      max-width: 700px;
+      color: #eef6ff;
+      margin-bottom: 28px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .mini {
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .mini h3 {
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    .panel {
+      background: white;
+      color: var(--text);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .panel h3 {
+      color: var(--primary);
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .action-box {
+      display: grid;
+      gap: 16px;
+    }
+
+    .action-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 18px;
+      background: #f9fbff;
+    }
+
+    .action-card h4 {
+      color: var(--primary);
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+
+    .action-card p {
+      margin-bottom: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-parent {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-parent:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-admin {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-admin:hover {
+      background: #0b3d91;
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      color: #dbeafe;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h2 {
+        font-size: 40px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h2 {
+        font-size: 32px;
+      }
+
+      .brand h1 {
+        font-size: 28px;
+      }
+
+      .top {
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="container topbar">
-      <div class="brand-wrap">
-        <div class="logo-circle">1</div>
+  <section class="hero">
+    <div class="container">
+      <div class="top">
+        <div class="logo">1E</div>
         <div class="brand">
           <h1>1-Sinf Edu Portal</h1>
           <p>O'zbekiston bo'yicha 1-sinfga onlayn qabul portali</p>
         </div>
       </div>
 
-      <div class="top-actions">
-        <a href="#ariza" class="btn btn-primary">Ariza topshirish</a>
-        <a href="#tekshirish" class="btn btn-light">Arizani tekshirish</a>
-      </div>
-    </div>
+      <div class="hero-grid">
+        <div class="hero-text">
+          <h2>Ota-ona va admin uchun alohida kabinet</h2>
+          <p>
+            Portalda ota-ona o‘z bolasini maktabga ro‘yxatdan o‘tkazadi,
+            ariza yuboradi va qabul holatini tekshiradi. Admin esa barcha
+            yuborilgan arizalar va xabarlarni alohida kabinetda boshqaradi.
+          </p>
 
-    <nav>
-      <ul>
-        <li><a href="#bosh">Bosh sahifa</a></li>
-        <li><a href="#imkoniyatlar">Imkoniyatlar</a></li>
-        <li><a href="#bosqichlar">Qabul bosqichlari</a></li>
-        <li><a href="#ariza">Online ariza</a></li>
-        <li><a href="#tekshirish">Ariza tekshirish</a></li>
-        <li><a href="#tarix">Arizalar</a></li>
-        <li><a href="#maktablar">Maktablar</a></li>
-        <li><a href="#boglanish">Bog'lanish</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <section class="hero" id="bosh">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <h2>1-sinfga qabul endi yanada qulay va oson</h2>
-        <p>
-          Farzandingizni 1-sinfga onlayn ro'yxatdan o'tkazing. Viloyat, tuman va
-          maktabni tanlab, arizani bir necha daqiqada yuboring.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#ariza" class="btn btn-primary">Ariza topshirish</a>
-          <a href="#bosqichlar" class="btn btn-light">Qabul tartibi</a>
-        </div>
-
-        <div class="hero-stats">
-          <div class="stat">
-            <h3>14+</h3>
-            <p>Viloyat va hududlar</p>
+          <div class="cards">
+            <div class="mini">
+              <h3>Ota-ona</h3>
+              <span>Ariza yuborish va holatni tekshirish</span>
+            </div>
+            <div class="mini">
+              <h3>Admin</h3>
+              <span>Arizalarni ko‘rish va boshqarish</span>
+            </div>
+            <div class="mini">
+              <h3>ID</h3>
+              <span>Avtomatik ariza raqami</span>
+            </div>
+            <div class="mini">
+              <h3>24/7</h3>
+              <span>Qulay onlayn tizim</span>
+            </div>
           </div>
-          <div class="stat">
-            <h3>1000+</h3>
-            <p>Maktablarni ulash imkoniyati</p>
-          </div>
-          <div class="stat">
-            <h3>24/7</h3>
-            <p>Onlayn ariza topshirish</p>
-          </div>
+
+          <p class="footer-note">
+            Aloqa: +998 99 039 56 02 | sharipovnodirbek618@gmail.com
+          </p>
         </div>
-      </div>
 
-      <div class="hero-card">
-        <h3>Portal imkoniyatlari</h3>
-        <ul>
-          <li>Viloyat → tuman → maktab tanlash</li>
-          <li>1-sinf uchun onlayn ariza yuborish</li>
-          <li>Ariza raqamini avtomatik yaratish</li>
-          <li>Ariza ID bo'yicha tekshirish</li>
-          <li>Arizalarni brauzerga saqlash</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+        <div class="panel">
+          <h3>Kabinetni tanlang</h3>
+          <p>Quyidagi bo‘limlardan birini tanlab davom eting.</p>
 
-  <section id="imkoniyatlar">
-    <div class="container">
-      <h2 class="section-title">Portal imkoniyatlari</h2>
-      <p class="section-subtitle">
-        1-Sinf Edu Portal ota-onalar va maktablar uchun qulay onlayn tizim sifatida yaratilgan.
-      </p>
-
-      <div class="features">
-        <div class="feature-card">
-          <h3>Hudud bo'yicha tanlash</h3>
-          <p>Viloyat, tuman va maktabni bosqichma-bosqich tanlash mumkin.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Onlayn ariza</h3>
-          <p>Farzandingizni tez va oson tarzda ro'yxatdan o'tkazing.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Ariza ID</h3>
-          <p>Har bir yuborilgan ariza uchun maxsus raqam hosil qilinadi.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Qulay interfeys</h3>
-          <p>Telefon va kompyuterda bir xil qulay ishlash uchun moslashtirilgan.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="bosqichlar">
-    <div class="container">
-      <h2 class="section-title">Qabul bosqichlari</h2>
-      <p class="section-subtitle">
-        Ariza topshirish jarayoni sodda va tushunarli ko'rinishda berilgan.
-      </p>
-
-      <div class="steps">
-        <div class="step-card">
-          <h3>Viloyatni tanlash</h3>
-          <p>Avval viloyat va tumanni tanlaysiz.</p>
-        </div>
-        <div class="step-card">
-          <h3>Maktabni tanlash</h3>
-          <p>Kerakli maktabni tanlaysiz.</p>
-        </div>
-        <div class="step-card">
-          <h3>Ma'lumot kiritish</h3>
-          <p>Bola va ota-ona haqidagi ma'lumotlarni yozasiz.</p>
-        </div>
-        <div class="step-card">
-          <h3>Arizani yuborish</h3>
-          <p>Ariza yuboriladi va maxsus ID raqam olinadi.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="ariza">
-    <div class="container">
-      <h2 class="section-title">1-sinfga online ariza</h2>
-      <p class="section-subtitle">
-        Quyidagi formani to'ldirib, ariza yuboring.
-      </p>
-
-      <div class="portal-layout">
-        <div class="form-card">
-          <h3>Ariza formasi</h3>
-          <p>Barcha majburiy maydonlarni to'ldiring.</p>
-
-          <form id="admissionForm">
-            <div class="form-grid">
-              <div class="form-group">
-                <select id="region" required>
-                  <option value="">Viloyatni tanlang</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <select id="district" required disabled>
-                  <option value="">Avval viloyatni tanlang</option>
-                </select>
-              </div>
-
-              <div class="form-group full">
-                <select id="school" required disabled>
-                  <option value="">Avval tumanni tanlang</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <input type="text" id="childName" placeholder="Bolaning F.I.Sh" required />
-              </div>
-
-              <div class="form-group">
-                <input type="date" id="birthDate" required />
-              </div>
-
-              <div class="form-group">
-                <select id="gender" required>
-                  <option value="">Jinsini tanlang</option>
-                  <option value="O'g'il bola">O'g'il bola</option>
-                  <option value="Qiz bola">Qiz bola</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <input type="text" id="parentName" placeholder="Ota-ona yoki vasiy F.I.Sh" required />
-              </div>
-
-              <div class="form-group">
-                <input type="tel" id="phone" placeholder="Telefon raqami" required />
-              </div>
-
-              <div class="form-group full">
-                <input type="text" id="address" placeholder="Yashash manzili" required />
-              </div>
-
-              <div class="form-group full">
-                <textarea id="message" rows="5" placeholder="Qo'shimcha ma'lumot"></textarea>
-              </div>
+          <div class="action-box">
+            <div class="action-card">
+              <h4>Ota-ona kabineti</h4>
+              <p>
+                Ariza topshirish, bola ma’lumotlarini kiritish,
+                maktabga ro‘yxatdan o‘tkazish va ariza holatini tekshirish.
+              </p>
+              <a class="btn btn-parent" href="parent.html">Ota-ona kabinetiga kirish</a>
             </div>
 
-            <button type="submit" class="btn btn-primary">Arizani yuborish</button>
-            <p class="form-note">
-              Bu demo versiya. Arizalar brauzerga saqlanadi.
-            </p>
-          </form>
-
-          <div id="result" class="result-box"></div>
-        </div>
-
-        <div class="info-stack">
-          <div class="info-card">
-            <h3>Kerakli hujjatlar</h3>
-            <ul>
-              <li>Bolaning tug'ilganlik guvohnomasi</li>
-              <li>Ota-ona pasport nusxasi</li>
-              <li>Yashash joyi ma'lumotnomasi</li>
-              <li>3x4 rasm</li>
-              <li>Tibbiy ma'lumotnoma</li>
-            </ul>
-          </div>
-
-          <div class="info-card">
-            <h3>Kimlar qabul qilinadi?</h3>
-            <p>7 yoshga to'lgan bolalar 1-sinfga qabul qilinadi.</p>
-          </div>
-
-          <div class="info-card">
-            <h3>Maslahat</h3>
-            <p>Arizani yuborishdan oldin barcha ma'lumotlarni qayta tekshiring.</p>
+            <div class="action-card">
+              <h4>Admin kabineti</h4>
+              <p>
+                Yuborilgan arizalarni ko‘rish, status berish,
+                o‘chirish va yuborilgan xabarlarni ko‘rish.
+              </p>
+              <a class="btn btn-admin" href="admin.html">Admin kabinetiga kirish</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <section id="tekshirish">
-    <div class="container">
-      <h2 class="section-title">Arizani tekshirish</h2>
-      <p class="section-subtitle">Ariza raqamini kiriting.</p>
-
-      <div class="lookup-box">
-        <input type="text" id="lookupId" placeholder="Masalan: EDU-123456" />
-        <div class="lookup-actions">
-          <button class="btn btn-primary" type="button" id="lookupBtn">Tekshirish</button>
-          <button class="btn btn-secondary" type="button" id="showAllBtn">So'nggi arizalar</button>
-        </div>
-        <div id="lookupResult" class="lookup-result"></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="tarix">
-    <div class="container">
-      <h2 class="section-title">So'nggi arizalar</h2>
-      <p class="section-subtitle">Saqlangan arizalar shu yerda ko'rinadi.</p>
-      <div id="historyGrid" class="history-grid"></div>
-    </div>
-  </section>
-
-  <section id="maktablar">
-    <div class="container">
-      <h2 class="section-title">Namunaviy maktablar</h2>
-      <p class="section-subtitle">Demo ko'rinishdagi maktablar ro'yxati.</p>
-
-      <div class="schools-grid">
-        <div class="school-card">
-          <span class="tag">Toshkent shahri</span>
-          <h3>45-sonli maktab</h3>
-          <p>Yunusobod tumani namunaviy maktabi.</p>
-        </div>
-
-        <div class="school-card">
-          <span class="tag">Farg'ona viloyati</span>
-          <h3>30-sonli maktab</h3>
-          <p>So'x tumani namunaviy maktabi.</p>
-        </div>
-
-        <div class="school-card">
-          <span class="tag">Samarqand viloyati</span>
-          <h3>12-sonli maktab</h3>
-          <p>Namunaviy maktab kartasi.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="boglanish">
-    <div class="container">
-      <h2 class="section-title">Bog'lanish</h2>
-      <p class="section-subtitle">Savol va takliflaringizni yuborishingiz mumkin.</p>
-
-      <div class="contact-layout">
-        <div class="contact-card">
-          <h3>Aloqa ma'lumotlari</h3>
-          <p><strong>Portal nomi:</strong> 1-Sinf Edu Portal</p>
-          <p><strong>Telefon:</strong> +998 00 000 00 00</p>
-          <p><strong>Email:</strong> portal@example.com</p>
-          <p><strong>Manzil:</strong> O'zbekiston, demo loyiha</p>
-        </div>
-
-        <div class="contact-card">
-          <h3>Xabar yuborish</h3>
-          <input type="text" placeholder="Ismingiz" />
-          <input type="text" placeholder="Telefon raqamingiz" />
-          <textarea rows="5" placeholder="Xabaringiz"></textarea>
-          <button class="btn btn-primary" type="button">Yuborish</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <h3>1-Sinf Edu Portal</h3>
-        <p>O'zbekiston bo'yicha 1-sinfga qabul uchun qulay va zamonaviy onlayn portal.</p>
-      </div>
-
-      <div>
-        <h3>Bo'limlar</h3>
-        <p><a href="#bosh">Bosh sahifa</a></p>
-        <p><a href="#ariza">Ariza topshirish</a></p>
-        <p><a href="#tekshirish">Ariza tekshirish</a></p>
-        <p><a href="#boglanish">Bog'lanish</a></p>
-      </div>
-
-      <div>
-        <h3>Aloqa</h3>
-        <p><strong>Telefon:</strong> +998 00 000 00 00</p>
-        <p><strong>Email:</strong> portal@example.com</p>
-        <p><strong>Manzil:</strong> O'zbekiston, demo loyiha</p>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
-      © 2026 1-Sinf Edu Portal. Barcha huquqlar himoyalangan.
-    </div>
-  </footer>
-
-  <script src="data.js"></script>
-  <script src="script.js"></script>
 </body>
 </html>
