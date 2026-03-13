@@ -1,517 +1,342 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-:root {
-  --primary: #0d47a1;
-  --secondary: #1565c0;
-  --accent: #43a047;
-  --accent-dark: #2e7d32;
-  --bg: #f4f7fc;
-  --text: #1f2937;
-  --muted: #6b7280;
-  --white: #ffffff;
-  --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  --radius: 16px;
-  --danger-bg: #ffebee;
-  --danger-text: #b71c1c;
-  --success-bg: #e8f5e9;
-  --success-text: #1b5e20;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
-
-.container {
-  width: 92%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-header {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: var(--white);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: 18px 0;
-  flex-wrap: wrap;
-}
-
-.brand-wrap {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.logo-circle {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ffffff, #dbeafe);
-  color: #0d47a1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 34px;
-  font-weight: bold;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-  flex-shrink: 0;
-}
-
-.brand h1 {
-  font-size: 30px;
-  margin: 0;
-}
-
-.brand p {
-  color: #dbeafe;
-  font-size: 15px;
-  margin-top: 4px;
-}
-
-.top-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 22px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 700;
-  transition: 0.25s;
-  border: none;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: var(--white);
-}
-
-.btn-primary:hover {
-  background: var(--accent-dark);
-  transform: translateY(-2px);
-}
-
-.btn-light {
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--white);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.btn-light:hover {
-  background: rgba(255, 255, 255, 0.24);
-}
-
-.btn-secondary {
-  background: #e8f0fe;
-  color: var(--primary);
-}
-
-nav {
-  background: #0b3d91;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 24px;
-  padding: 14px 0;
-}
-
-nav a {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 15px;
-}
-
-nav a:hover {
-  color: #bfdbfe;
-}
-
-.hero {
-  min-height: 620px;
-  display: flex;
-  align-items: center;
-  background-image:
-    linear-gradient(rgba(13, 71, 161, 0.55), rgba(13, 71, 161, 0.55)),
-    url("https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1600&q=80");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: var(--white);
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 30px;
-  align-items: center;
-  width: 100%;
-}
-
-.hero-content h2 {
-  font-size: 58px;
-  line-height: 1.15;
-  margin-bottom: 18px;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.45);
-}
-
-.hero-content p {
-  font-size: 22px;
-  max-width: 680px;
-  margin-bottom: 24px;
-  color: #eef6ff;
-  text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.45);
-}
-
-.hero-actions {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-bottom: 26px;
-}
-
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  max-width: 760px;
-}
-
-.stat {
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(4px);
-  border-radius: 14px;
-  padding: 16px;
-}
-
-.stat h3 {
-  font-size: 28px;
-  margin-bottom: 6px;
-}
-
-.stat p {
-  font-size: 14px;
-  margin: 0;
-  color: #eff6ff;
-}
-
-.hero-card,
-.feature-card,
-.step-card,
-.school-card,
-.contact-card,
-.info-card,
-.history-card,
-.form-card,
-.lookup-box {
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 26px;
-}
-
-.hero-card h3,
-.feature-card h3,
-.step-card h3,
-.school-card h3,
-.contact-card h3,
-.info-card h3,
-.history-card h3,
-.form-card h3 {
-  color: var(--primary);
-  margin-bottom: 12px;
-  font-size: 22px;
-}
-
-.hero-card ul,
-.info-card ul {
-  padding-left: 20px;
-  color: var(--muted);
-}
-
-.info-card ul li {
-  margin-bottom: 8px;
-}
-
-section {
-  padding: 80px 0;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 38px;
-  color: var(--primary);
-  margin-bottom: 14px;
-}
-
-.section-subtitle {
-  text-align: center;
-  color: var(--muted);
-  max-width: 760px;
-  margin: 0 auto 40px;
-  font-size: 17px;
-}
-
-.features,
-.steps,
-.schools-grid,
-.footer-grid,
-.history-grid {
-  display: grid;
-  gap: 22px;
-}
-
-.features {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.steps {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.step-card {
-  position: relative;
-  padding-top: 58px;
-}
-
-.step-card::before {
-  content: "";
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.portal-layout,
-.contact-layout {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 28px;
-  align-items: start;
-}
-
-.form-card p {
-  color: var(--muted);
-  margin-bottom: 22px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.form-group.full {
-  grid-column: 1 / -1;
-}
-
-.form-card input,
-.form-card select,
-.form-card textarea,
-.lookup-box input,
-.contact-card input,
-.contact-card textarea {
-  width: 100%;
-  padding: 14px 15px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  font-size: 15px;
-  outline: none;
-}
-
-.form-card input:focus,
-.form-card select:focus,
-.form-card textarea:focus,
-.lookup-box input:focus,
-.contact-card input:focus,
-.contact-card textarea:focus {
-  border-color: var(--secondary);
-  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.12);
-}
-
-.form-note {
-  font-size: 14px;
-  color: var(--muted);
-  margin-top: 12px;
-}
-
-.result-box,
-.lookup-result {
-  margin-top: 18px;
-  display: none;
-  border-radius: 12px;
-  padding: 18px;
-  font-weight: 700;
-  line-height: 1.7;
-}
-
-.info-stack {
-  display: grid;
-  gap: 20px;
-}
-
-.schools-grid,
-.history-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.tag {
-  display: inline-block;
-  background: #e8f0fe;
-  color: var(--primary);
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 12px;
-}
-
-.lookup-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 14px;
-  flex-wrap: wrap;
-}
-
-.contact-card p {
-  margin-bottom: 12px;
-}
-
-.contact-card input,
-.contact-card textarea {
-  margin-bottom: 14px;
-}
-
-.history-card small {
-  color: var(--muted);
-  display: block;
-  margin-top: 8px;
-}
-
-.school-card:hover,
-.feature-card:hover,
-.step-card:hover,
-.info-card:hover,
-.history-card:hover {
-  transform: translateY(-4px);
-  transition: 0.3s;
-}
-
-footer {
-  background: #0a2d6d;
-  color: #eaf2ff;
-  padding: 60px 0 24px;
-  margin-top: 20px;
-}
-
-.footer-grid {
-  grid-template-columns: 1.1fr 0.9fr 0.8fr;
-  margin-bottom: 26px;
-}
-
-footer h3 {
-  font-size: 22px;
-  margin-bottom: 12px;
-  color: #ffffff;
-}
-
-footer p,
-footer a {
-  color: #d9e7ff;
-  text-decoration: none;
-  margin-bottom: 8px;
-}
-
-footer strong {
-  color: #ffffff;
-}
-
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-  padding-top: 20px;
-  text-align: center;
-  color: #cfe0ff;
-  font-size: 14px;
-}
-
-@media (max-width: 1024px) {
-  .features,
-  .steps,
-  .schools-grid,
-  .history-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero-grid,
-  .portal-layout,
-  .contact-layout,
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .brand h1 {
-    font-size: 24px;
-  }
-
-  .hero {
-    min-height: 540px;
-  }
-
-  .hero-content h2 {
-    font-size: 38px;
-  }
-
-  .hero-content p {
-    font-size: 18px;
-  }
-
-  .hero-stats,
-  .features,
-  .steps,
-  .schools-grid,
-  .history-grid,
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section-title {
-    font-size: 30px;
-  }
-
-  nav ul {
-    gap: 14px;
-  }
-}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1-Sinf Edu Portal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="brand-wrap">
+        <div class="logo-circle">1</div>
+        <div class="brand">
+          <h1>1-Sinf Edu Portal</h1>
+          <p>O'zbekiston bo'yicha 1-sinfga onlayn qabul portali</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <a href="#ariza" class="btn btn-primary">Ariza topshirish</a>
+        <a href="#tekshirish" class="btn btn-light">Arizani tekshirish</a>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#bosh">Bosh sahifa</a></li>
+        <li><a href="#imkoniyatlar">Imkoniyatlar</a></li>
+        <li><a href="#bosqichlar">Bosqichlar</a></li>
+        <li><a href="#ariza">Online ariza</a></li>
+        <li><a href="#tekshirish">Ariza tekshirish</a></li>
+        <li><a href="#tarix">Arizalar</a></li>
+        <li><a href="#boglanish">Bog'lanish</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="bosh">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h2>1-sinfga qabul endi yanada qulay va oson</h2>
+        <p>
+          Farzandingizni 1-sinfga onlayn ro'yxatdan o'tkazing.
+          Viloyat, tuman va maktabni tanlab, arizani bir necha daqiqada yuboring.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#ariza" class="btn btn-primary">Ariza topshirish</a>
+          <a href="#tekshirish" class="btn btn-light">ID orqali tekshirish</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <h3>14+</h3>
+            <p>Hududlar</p>
+          </div>
+          <div class="stat">
+            <h3>ID</h3>
+            <p>Avtomatik raqam</p>
+          </div>
+          <div class="stat">
+            <h3>24/7</h3>
+            <p>Onlayn qabul</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Portal imkoniyatlari</h3>
+        <ul>
+          <li>Viloyat, tuman, maktab tanlash</li>
+          <li>Onlayn ariza yuborish</li>
+          <li>Avtomatik ariza ID yaratish</li>
+          <li>ID orqali arizani qidirish</li>
+          <li>Arizalarni brauzerga saqlash</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="imkoniyatlar">
+    <div class="container">
+      <h2 class="section-title">Portal imkoniyatlari</h2>
+      <p class="section-subtitle">
+        Ota-onalar uchun qulay, sodda va tushunarli online qabul tizimi.
+      </p>
+
+      <div class="features">
+        <div class="feature-card">
+          <h3>Hudud tanlash</h3>
+          <p>Viloyat, tuman va maktab ketma-ket tanlanadi.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Ariza yuborish</h3>
+          <p>Barcha ma'lumotlar kiritilib ariza jo'natiladi.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Avtomatik ID</h3>
+          <p>Har bir ariza uchun maxsus ID yaratiladi.</p>
+        </div>
+
+        <div class="feature-card">
+          <h3>Qayta tekshirish</h3>
+          <p>Ariza ID orqali ma'lumotni topish mumkin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bosqichlar">
+    <div class="container">
+      <h2 class="section-title">Qabul bosqichlari</h2>
+      <p class="section-subtitle">
+        Ariza topshirish tartibi sodda va aniq ko'rinishda.
+      </p>
+
+      <div class="steps">
+        <div class="step-card">
+          <h3>Viloyatni tanlash</h3>
+          <p>Avval viloyat va tuman tanlanadi.</p>
+        </div>
+
+        <div class="step-card">
+          <h3>Maktabni tanlash</h3>
+          <p>Kerakli maktab ro'yxatdan tanlanadi.</p>
+        </div>
+
+        <div class="step-card">
+          <h3>Ma'lumot kiritish</h3>
+          <p>Bola va ota-ona haqidagi ma'lumotlar yoziladi.</p>
+        </div>
+
+        <div class="step-card">
+          <h3>Arizani yuborish</h3>
+          <p>Ariza yuborilib, maxsus ID olinadi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ariza">
+    <div class="container">
+      <h2 class="section-title">1-sinfga online ariza</h2>
+      <p class="section-subtitle">
+        Quyidagi formani to'ldirib ariza yuboring.
+      </p>
+
+      <div class="portal-layout">
+        <div class="form-card">
+          <h3>Ariza formasi</h3>
+          <p>Barcha majburiy maydonlarni to'ldiring.</p>
+
+          <form id="admissionForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="region">Viloyat</label>
+                <select id="region" required>
+                  <option value="">Viloyatni tanlang</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="district">Tuman / shahar</label>
+                <select id="district" required disabled>
+                  <option value="">Avval viloyatni tanlang</option>
+                </select>
+              </div>
+
+              <div class="form-group full">
+                <label for="school">Maktab</label>
+                <select id="school" required disabled>
+                  <option value="">Avval tumanni tanlang</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="childName">Bolaning F.I.Sh</label>
+                <input type="text" id="childName" placeholder="Bolaning F.I.Sh" required />
+              </div>
+
+              <div class="form-group">
+                <label for="birthDate">Tug'ilgan sana</label>
+                <input type="date" id="birthDate" required />
+              </div>
+
+              <div class="form-group">
+                <label for="gender">Jinsi</label>
+                <select id="gender" required>
+                  <option value="">Jinsini tanlang</option>
+                  <option value="O'g'il bola">O'g'il bola</option>
+                  <option value="Qiz bola">Qiz bola</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="parentName">Ota-ona yoki vasiy</label>
+                <input type="text" id="parentName" placeholder="Ota-ona yoki vasiy F.I.Sh" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Telefon raqami</label>
+                <input type="tel" id="phone" placeholder="+998 90 123 45 67" required />
+              </div>
+
+              <div class="form-group full">
+                <label for="address">Yashash manzili</label>
+                <input type="text" id="address" placeholder="Yashash manzili" required />
+              </div>
+
+              <div class="form-group full">
+                <label for="message">Qo'shimcha ma'lumot</label>
+                <textarea id="message" rows="5" placeholder="Qo'shimcha ma'lumot"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Arizani yuborish</button>
+            <p class="form-note">Ariza yuborilgandan keyin avtomatik ID yaratiladi.</p>
+          </form>
+
+          <div id="result" class="result-box"></div>
+        </div>
+
+        <div class="info-stack">
+          <div class="info-card">
+            <h3>Kerakli hujjatlar</h3>
+            <ul>
+              <li>Bolaning tug'ilganlik guvohnomasi</li>
+              <li>Ota-ona pasport nusxasi</li>
+              <li>Yashash joyi ma'lumotnomasi</li>
+              <li>3x4 rasm</li>
+              <li>Tibbiy ma'lumotnoma</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Kimlar qabul qilinadi?</h3>
+            <p>7 yoshga to'lgan bolalar 1-sinfga qabul qilinadi.</p>
+          </div>
+
+          <div class="info-card">
+            <h3>Eslatma</h3>
+            <p>ID raqamini saqlab qo'ying. Keyin arizani tekshirishda kerak bo'ladi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tekshirish">
+    <div class="container">
+      <h2 class="section-title">Arizani ID orqali tekshirish</h2>
+      <p class="section-subtitle">
+        Ariza raqamini kiriting va yuborilgan arizani toping.
+      </p>
+
+      <div class="lookup-box">
+        <label for="lookupId">Ariza ID</label>
+        <input type="text" id="lookupId" placeholder="Masalan: EDU-123456" />
+
+        <div class="lookup-actions">
+          <button class="btn btn-primary" type="button" id="lookupBtn">Tekshirish</button>
+          <button class="btn btn-secondary" type="button" id="showAllBtn">So'nggi arizalar</button>
+        </div>
+
+        <div id="lookupResult" class="lookup-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tarix">
+    <div class="container">
+      <h2 class="section-title">So'nggi arizalar</h2>
+      <p class="section-subtitle">
+        Shu brauzerda saqlangan oxirgi arizalar shu yerda ko'rinadi.
+      </p>
+
+      <div id="historyGrid" class="history-grid"></div>
+    </div>
+  </section>
+
+  <section id="boglanish">
+    <div class="container">
+      <h2 class="section-title">Bog'lanish</h2>
+      <p class="section-subtitle">
+        Savol va takliflaringizni yuborishingiz mumkin.
+      </p>
+
+      <div class="contact-layout">
+        <div class="contact-card">
+          <h3>Aloqa ma'lumotlari</h3>
+          <p><strong>Portal nomi:</strong> 1-Sinf Edu Portal</p>
+          <p><strong>Telefon:</strong> +998 00 000 00 00</p>
+          <p><strong>Email:</strong> portal@example.com</p>
+          <p><strong>Manzil:</strong> O'zbekiston, demo loyiha</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>Xabar yuborish</h3>
+          <input type="text" placeholder="Ismingiz" />
+          <input type="text" placeholder="Telefon raqamingiz" />
+          <textarea rows="5" placeholder="Xabaringiz"></textarea>
+          <button class="btn btn-primary" type="button">Yuborish</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3>1-Sinf Edu Portal</h3>
+        <p>O'zbekiston bo'yicha 1-sinfga qabul uchun qulay va zamonaviy onlayn portal.</p>
+      </div>
+
+      <div>
+        <h3>Bo'limlar</h3>
+        <p><a href="#bosh">Bosh sahifa</a></p>
+        <p><a href="#ariza">Ariza topshirish</a></p>
+        <p><a href="#tekshirish">Ariza tekshirish</a></p>
+        <p><a href="#boglanish">Bog'lanish</a></p>
+      </div>
+
+      <div>
+        <h3>Aloqa</h3>
+        <p><strong>Telefon:</strong> +998 00 000 00 00</p>
+        <p><strong>Email:</strong> portal@example.com</p>
+        <p><strong>Manzil:</strong> O'zbekiston, demo loyiha</p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      © 2026 1-Sinf Edu Portal. Barcha huquqlar himoyalangan.
+    </div>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
