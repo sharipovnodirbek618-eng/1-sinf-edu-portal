@@ -30,6 +30,7 @@ function resetSelect(select, placeholder) {
 
 regionSelect.addEventListener("change", function () {
   const region = this.value;
+
   resetSelect(districtSelect, region ? "Tumanni tanlang" : "Avval viloyatni tanlang");
   resetSelect(schoolSelect, "Avval tumanni tanlang");
   schoolSelect.disabled = true;
@@ -52,6 +53,7 @@ regionSelect.addEventListener("change", function () {
 districtSelect.addEventListener("change", function () {
   const region = regionSelect.value;
   const district = this.value;
+
   resetSelect(schoolSelect, district ? "Maktabni tanlang" : "Avval tumanni tanlang");
 
   if (!region || !district) {
@@ -84,8 +86,8 @@ function renderHistory() {
   if (!applications.length) {
     historyGrid.innerHTML = `
       <div class="history-card">
-        <h3>Hozircha ariza yo‘q</h3>
-        <p>Yangi ariza yuborilgandan keyin shu yerda ko‘rinadi.</p>
+        <h3>Hozircha ariza yo'q</h3>
+        <p>Yangi ariza yuborilgandan keyin shu yerda ko'rinadi.</p>
       </div>
     `;
     return;
@@ -138,16 +140,16 @@ admissionForm.addEventListener("submit", function (e) {
     resultBox.style.display = "block";
     resultBox.style.background = "#ffebee";
     resultBox.style.color = "#b71c1c";
-    resultBox.innerHTML = "Iltimos, barcha majburiy maydonlarni to‘ldiring.";
+    resultBox.innerHTML = "Iltimos, barcha majburiy maydonlarni to'ldiring.";
     return;
   }
 
-  const phoneRegex = /^[+]?[0-9\\s-]{9,20}$/;
+  const phoneRegex = /^[+]?[0-9\s-]{9,20}$/;
   if (!phoneRegex.test(application.phone)) {
     resultBox.style.display = "block";
     resultBox.style.background = "#ffebee";
     resultBox.style.color = "#b71c1c";
-    resultBox.innerHTML = "Telefon raqamini to‘g‘ri kiriting.";
+    resultBox.innerHTML = "Telefon raqamini to'g'ri kiriting.";
     return;
   }
 
