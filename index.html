@@ -23,12 +23,6 @@
       --white: #ffffff;
       --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
       --radius: 16px;
-      --danger-bg: #ffebee;
-      --danger-text: #b71c1c;
-      --success-bg: #e8f5e9;
-      --success-text: #1b5e20;
-      --warning-bg: #fff8e1;
-      --warning-text: #8d6e00;
     }
 
     html {
@@ -83,6 +77,13 @@
       font-size: 34px;
       font-weight: bold;
       flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    #logoBox img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .brand h1 {
@@ -451,7 +452,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 1000px;
+      min-width: 1150px;
     }
 
     th, td {
@@ -514,6 +515,32 @@
     .small-danger {
       background: #ef5350;
       color: white;
+    }
+
+    .photo-preview {
+      width: 120px;
+      height: 150px;
+      border: 2px dashed #b0bec5;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #f9fbff;
+      color: #607d8b;
+      font-size: 13px;
+    }
+
+    .photo-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #adminPanel {
+      display: none;
+      background: #eef4ff;
+      padding: 40px 0;
     }
 
     footer {
@@ -602,7 +629,7 @@
 
     @media print {
       header, nav, .hero, #imkoniyatlar, #bosqichlar, #boglanish, footer,
-      .lookup-actions, .table-actions, .btn, .small-btn {
+      .lookup-actions, .table-actions, .btn, .small-btn, #adminPanel {
         display: none !important;
       }
 
@@ -621,7 +648,7 @@
   <header>
     <div class="container topbar">
       <div class="brand-wrap">
-        <div class="logo-circle">1</div>
+        <div class="logo-circle" id="logoBox">1</div>
         <div class="brand">
           <h1>1-Sinf Edu Portal</h1>
           <p>O'zbekiston bo'yicha 1-sinfga onlayn qabul portali</p>
@@ -631,6 +658,8 @@
       <div class="top-actions">
         <a href="#ariza" class="btn btn-primary">Ariza topshirish</a>
         <a href="#tekshirish" class="btn btn-light">Arizani tekshirish</a>
+        <button class="btn btn-light" type="button" id="adminLoginBtn">Admin kirish</button>
+        <button class="btn btn-light" type="button" id="logoBtn">Logo o‘zgartirish</button>
       </div>
     </div>
 
@@ -685,7 +714,7 @@
           <li>Online ariza yuborish</li>
           <li>Avtomatik ID yaratish</li>
           <li>ID orqali arizani qidirish</li>
-          <li>Status o‘zgartirish va o‘chirish</li>
+          <li>3x4 rasm yuklash</li>
         </ul>
       </div>
     </div>
@@ -710,8 +739,8 @@
           <p>Har bir ariza uchun maxsus ID yaratiladi.</p>
         </div>
         <div class="feature-card">
-          <h3>Jadval boshqaruvi</h3>
-          <p>Arizalarni jadvalda ko‘rish, qidirish va boshqarish mumkin.</p>
+          <h3>Rasm yuklash</h3>
+          <p>3x4 talaba rasmi yuklab birga saqlanadi.</p>
         </div>
       </div>
     </div>
@@ -810,6 +839,16 @@
                 <input type="text" id="address" placeholder="Yashash manzili" required />
               </div>
 
+              <div class="form-group">
+                <label for="studentPhoto">3x4 rasm</label>
+                <input type="file" id="studentPhoto" accept="image/*" />
+              </div>
+
+              <div class="form-group">
+                <label>Rasm ko‘rinishi</label>
+                <div class="photo-preview" id="photoPreview">Rasm tanlanmagan</div>
+              </div>
+
               <div class="form-group full">
                 <label for="message">Qo'shimcha ma'lumot</label>
                 <textarea id="message" rows="5" placeholder="Qo'shimcha ma'lumot"></textarea>
@@ -898,6 +937,7 @@
 
         <div class="table-actions">
           <input type="text" id="searchInput" placeholder="ID, ism, viloyat, maktab bo‘yicha qidirish..." />
+          <button class="btn btn-secondary" type="button" id="exportCsvBtn">CSV yuklash</button>
           <button class="btn btn-secondary" type="button" id="clearAllBtn">Hammasini o‘chirish</button>
         </div>
 
@@ -906,6 +946,7 @@
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Rasm</th>
                 <th>Bola</th>
                 <th>Hudud</th>
                 <th>Maktab</th>
@@ -955,6 +996,38 @@
       </div>
     </div>
   </section>
+
+  <div id="adminPanel">
+    <div class="container">
+      <div class="table-card">
+        <h3>Admin panel</h3>
+        <p style="margin-bottom:16px; color:#6b7280;">
+          Bu demo admin panel. Parol brauzer ichida tekshiriladi.
+        </p>
+
+        <div class="stats-panel">
+          <div class="mini-stat">
+            <h4 id="adminTotal">0</h4>
+            <p>Jami ariza</p>
+          </div>
+          <div class="mini-stat">
+            <h4 id="adminApproved">0</h4>
+            <p>Tasdiqlangan</p>
+          </div>
+          <div class="mini-stat">
+            <h4 id="adminReview">0</h4>
+            <p>Ko‘rib chiqilmoqda</p>
+          </div>
+          <div class="mini-stat">
+            <h4 id="adminRejected">0</h4>
+            <p>Bekor qilingan</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="logoInput" accept="image/*" style="display:none;">
 
   <footer>
     <div class="container footer-grid">
@@ -1059,6 +1132,8 @@
     };
 
     const STORAGE_KEY = "edu_portal_applications";
+    const ADMIN_PASSWORD = "12345";
+    const LOGO_KEY = "edu_portal_logo";
 
     const regionSelect = document.getElementById("region");
     const districtSelect = document.getElementById("district");
@@ -1074,11 +1149,27 @@
     const tableBody = document.getElementById("applicationsTableBody");
     const searchInput = document.getElementById("searchInput");
     const clearAllBtn = document.getElementById("clearAllBtn");
+    const exportCsvBtn = document.getElementById("exportCsvBtn");
 
     const totalCount = document.getElementById("totalCount");
     const newCount = document.getElementById("newCount");
     const reviewCount = document.getElementById("reviewCount");
     const approvedCount = document.getElementById("approvedCount");
+
+    const adminLoginBtn = document.getElementById("adminLoginBtn");
+    const adminPanel = document.getElementById("adminPanel");
+    const adminTotal = document.getElementById("adminTotal");
+    const adminApproved = document.getElementById("adminApproved");
+    const adminReview = document.getElementById("adminReview");
+    const adminRejected = document.getElementById("adminRejected");
+
+    const logoBtn = document.getElementById("logoBtn");
+    const logoInput = document.getElementById("logoInput");
+    const logoBox = document.getElementById("logoBox");
+
+    const studentPhoto = document.getElementById("studentPhoto");
+    const photoPreview = document.getElementById("photoPreview");
+    let studentPhotoData = "";
 
     function populateRegions() {
       regionSelect.innerHTML = '<option value="">Viloyatni tanlang</option>';
@@ -1139,6 +1230,23 @@
       });
     });
 
+    studentPhoto.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+
+      if (!file) {
+        studentPhotoData = "";
+        photoPreview.innerHTML = "Rasm tanlanmagan";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function () {
+        studentPhotoData = reader.result;
+        photoPreview.innerHTML = `<img src="${studentPhotoData}" alt="Talaba rasmi">`;
+      };
+      reader.readAsDataURL(file);
+    });
+
     function getApplications() {
       return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
     }
@@ -1163,6 +1271,14 @@
       newCount.textContent = applications.filter(a => a.status === "Qabul qilindi").length;
       reviewCount.textContent = applications.filter(a => a.status === "Ko'rib chiqilmoqda").length;
       approvedCount.textContent = applications.filter(a => a.status === "Tasdiqlandi").length;
+    }
+
+    function renderAdminStats() {
+      const applications = getApplications();
+      adminTotal.textContent = applications.length;
+      adminApproved.textContent = applications.filter(a => a.status === "Tasdiqlandi").length;
+      adminReview.textContent = applications.filter(a => a.status === "Ko'rib chiqilmoqda").length;
+      adminRejected.textContent = applications.filter(a => a.status === "Bekor qilindi").length;
     }
 
     function renderHistory() {
@@ -1214,10 +1330,11 @@
       if (!filtered.length) {
         tableBody.innerHTML = `
           <tr>
-            <td colspan="9">Arizalar topilmadi.</td>
+            <td colspan="10">Arizalar topilmadi.</td>
           </tr>
         `;
         updateCounters(applications);
+        renderAdminStats();
         return;
       }
 
@@ -1225,6 +1342,7 @@
         const row = document.createElement("tr");
         row.innerHTML = `
           <td>${item.applicationId}</td>
+          <td>${item.photo ? `<img src="${item.photo}" alt="Rasm" style="width:45px;height:60px;object-fit:cover;border-radius:6px;">` : "—"}</td>
           <td>${item.childName}</td>
           <td>${item.region}<br>${item.district}</td>
           <td>${item.school}</td>
@@ -1249,6 +1367,7 @@
       });
 
       updateCounters(applications);
+      renderAdminStats();
     }
 
     function changeStatus(id, newStatus) {
@@ -1272,6 +1391,57 @@
       renderTable(searchInput.value);
     }
 
+    function exportToCSV() {
+      const applications = getApplications();
+
+      if (!applications.length) {
+        alert("Export qilish uchun arizalar yo'q.");
+        return;
+      }
+
+      const headers = [
+        "ID", "Bola", "Viloyat", "Tuman", "Maktab",
+        "Tugilgan sana", "Jinsi", "Ota-ona", "Telefon",
+        "Manzil", "Status", "Sana"
+      ];
+
+      const rows = applications.map(item => [
+        item.applicationId,
+        item.childName,
+        item.region,
+        item.district,
+        item.school,
+        item.birthDate,
+        item.gender,
+        item.parentName,
+        item.phone,
+        item.address,
+        item.status,
+        item.createdAt
+      ]);
+
+      const csvContent = [headers, ...rows]
+        .map(row => row.map(value => `"${String(value).replace(/"/g, '""')}"`).join(","))
+        .join("\n");
+
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "arizalar.csv";
+      link.click();
+
+      URL.revokeObjectURL(url);
+    }
+
+    function loadLogo() {
+      const savedLogo = localStorage.getItem(LOGO_KEY);
+      if (savedLogo) {
+        logoBox.innerHTML = `<img src="${savedLogo}" alt="Portal logosi">`;
+      }
+    }
+
     admissionForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -1288,7 +1458,8 @@
         address: document.getElementById("address").value.trim(),
         message: document.getElementById("message").value.trim(),
         createdAt: new Date().toLocaleString("uz-UZ"),
-        status: "Qabul qilindi"
+        status: "Qabul qilindi",
+        photo: studentPhotoData
       };
 
       if (
@@ -1339,9 +1510,12 @@
         Manzil: ${application.address}<br>
         Status: ${application.status}<br>
         Qo'shimcha ma'lumot: ${application.message || "Kiritilmagan"}
+        ${application.photo ? `<br><br><img src="${application.photo}" alt="Talaba rasmi" style="width:120px;height:150px;object-fit:cover;border-radius:8px;border:1px solid #ccc;">` : ""}
       `;
 
       admissionForm.reset();
+      studentPhotoData = "";
+      photoPreview.innerHTML = "Rasm tanlanmagan";
       districtSelect.disabled = true;
       schoolSelect.disabled = true;
       resetSelect(districtSelect, "Avval viloyatni tanlang");
@@ -1387,6 +1561,7 @@
         Manzil: ${found.address}<br>
         Holat: ${found.status}<br>
         Sana: ${found.createdAt}
+        ${found.photo ? `<br><br><img src="${found.photo}" alt="Talaba rasmi" style="width:120px;height:150px;object-fit:cover;border-radius:8px;border:1px solid #ccc;">` : ""}
       `;
     });
 
@@ -1412,9 +1587,40 @@
       resultBox.style.display = "none";
     });
 
+    exportCsvBtn.addEventListener("click", exportToCSV);
+
+    adminLoginBtn.addEventListener("click", function () {
+      const password = prompt("Admin parolni kiriting:");
+      if (password === ADMIN_PASSWORD) {
+        adminPanel.style.display = "block";
+        renderAdminStats();
+        adminPanel.scrollIntoView({ behavior: "smooth" });
+      } else if (password !== null) {
+        alert("Parol noto‘g‘ri.");
+      }
+    });
+
+    logoBtn.addEventListener("click", function () {
+      logoInput.click();
+    });
+
+    logoInput.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function () {
+        localStorage.setItem(LOGO_KEY, reader.result);
+        loadLogo();
+      };
+      reader.readAsDataURL(file);
+    });
+
     populateRegions();
     renderHistory();
     renderTable();
+    renderAdminStats();
+    loadLogo();
   </script>
 </body>
 </html>
