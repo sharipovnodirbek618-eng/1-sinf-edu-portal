@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ota-ona kabineti</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    :root {
+      --primary: #0d47a1;
+      --secondary: #1565c0;
+      --accent: #43a047;
+      --accent-dark: #2e7d32;
+      --bg: #f4f7fc;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 18px 0;
+      flex-wrap: wrap;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffffff, #dbeafe);
+      color: #0d47a1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .brand h1 {
+      font-size: 30px;
+      margin-bottom: 4px;
+    }
+
+    .brand p {
+      color: #dbeafe;
+      font-size: 15px;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+    }
+
+    .btn-light {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .btn-secondary {
+      background: #e8f0fe;
+      color: var(--primary);
+    }
+
+    nav {
+      background: #0b3d91;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding: 14px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .hero {
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(rgba(13, 71, 161, 0.55), rgba(13, 71, 161, 0.55)),
+        url("https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+      color: white;
+    }
+
+    .hero-content {
+      padding: 60px 0;
+    }
+
+    .hero-content h2 {
+      font-size: 52px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      max-width: 760px;
+      color: #eef6ff;
+    }
+
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 38px;
+      color: var(--primary);
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 40px;
+      font-size: 17px;
+    }
+
+    .portal-layout,
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .form-card,
+    .lookup-box,
+    .info-card,
+    .contact-card,
+    .history-card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .form-card h3,
+    .lookup-box h3,
+    .info-card h3,
+    .contact-card h3,
+    .history-card h3 {
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-size: 24px;
+    }
+
+    .form-card p,
+    .contact-card p,
+    .info-card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .photo-preview {
+      width: 120px;
+      height: 150px;
+      border: 2px dashed #b0bec5;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #f9fbff;
+      color: #607d8b;
+      font-size: 13px;
+    }
+
+    .photo-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .result-box,
+    .lookup-result,
+    .message-result {
+      margin-top: 18px;
+      display: none;
+      border-radius: 12px;
+      padding: 18px;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    .lookup-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+
+    .info-stack {
+      display: grid;
+      gap: 20px;
+    }
+
+    .history-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .history-card small {
+      color: var(--muted);
+      display: block;
+      margin-top: 8px;
+    }
+
+    footer {
+      background: #0a2d6d;
+      color: #eaf2ff;
+      padding: 55px 0 24px;
+      margin-top: 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.8fr;
+      gap: 22px;
+      margin-bottom: 26px;
+    }
+
+    footer h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: white;
+    }
+
+    footer p,
+    footer a {
+      color: #d9e7ff;
+      text-decoration: none;
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.14);
+      padding-top: 20px;
+      text-align: center;
+      color: #cfe0ff;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1024px) {
+      .portal-layout,
+      .contact-layout,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .history-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h2 {
+        font-size: 36px;
+      }
+
+      .form-grid,
+      .history-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 30px;
+      }
+
+      .brand h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="brand-wrap">
+        <div class="logo-circle">1E</div>
+        <div class="brand">
+          <h1>Ota-ona kabineti</h1>
+          <p>1-Sinf Edu Portal</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <a href="index.html" class="btn btn-light">Bosh sahifa</a>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#ariza">Ariza yuborish</a></li>
+        <li><a href="#tekshirish">Holatini tekshirish</a></li>
+        <li><a href="#tarix">Mening arizalarim</a></li>
+        <li><a href="#boglanish">Xabar yuborish</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <h2>Farzandingizni 1-sinfga ro‘yxatdan o‘tkazing</h2>
+      <p>
+        Ota-ona kabinetida siz ariza yuborishingiz, ariza raqami orqali
+        holatini tekshirishingiz va bog‘lanish bo‘limi orqali xabar
+        yuborishingiz mumkin.
+      </p>
+    </div>
+  </section>
+
+  <section id="ariza">
+    <div class="container">
+      <h2 class="section-title">Ariza yuborish</h2>
+      <p class="section-subtitle">
+        Bola ma’lumotlarini to‘ldirib arizani yuboring.
+      </p>
+
+      <div class="portal-layout">
+        <div class="form-card">
+          <h3>Ariza formasi</h3>
+          <p>Barcha majburiy maydonlarni to‘ldiring.</p>
+
+          <form id="admissionForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="region">Viloyat</label>
+                <select id="region" required>
+                  <option value="">Viloyatni tanlang</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="district">Tuman / shahar</label>
+                <select id="district" required disabled>
+                  <option value="">Avval viloyatni tanlang</option>
+                </select>
+              </div>
+
+              <div class="form-group full">
+                <label for="school">Maktab</label>
+                <select id="school" required disabled>
+                  <option value="">Avval tumanni tanlang</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="childName">Bolaning F.I.Sh</label>
+                <input type="text" id="childName" placeholder="Bolaning F.I.Sh" required />
+              </div>
+
+              <div class="form-group">
+                <label for="birthDate">Tug'ilgan sana</label>
+                <input type="date" id="birthDate" required />
+              </div>
+
+              <div class="form-group">
+                <label for="gender">Jinsi</label>
+                <select id="gender" required>
+                  <option value="">Jinsini tanlang</option>
+                  <option value="O'g'il bola">O'g'il bola</option>
+                  <option value="Qiz bola">Qiz bola</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="parentName">Ota-ona yoki vasiy</label>
+                <input type="text" id="parentName" placeholder="Ota-ona yoki vasiy F.I.Sh" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Telefon raqami</label>
+                <input type="tel" id="phone" placeholder="+998 90 123 45 67" required />
+              </div>
+
+              <div class="form-group full">
+                <label for="address">Yashash manzili</label>
+                <input type="text" id="address" placeholder="Yashash manzili" required />
+              </div>
+
+              <div class="form-group">
+                <label for="studentPhoto">3x4 rasm</label>
+                <input type="file" id="studentPhoto" accept="image/*" />
+              </div>
+
+              <div class="form-group">
+                <label>Rasm ko‘rinishi</label>
+                <div class="photo-preview" id="photoPreview">Rasm tanlanmagan</div>
+              </div>
+
+              <div class="form-group full">
+                <label for="message">Qo'shimcha ma'lumot</label>
+                <textarea id="message" rows="5" placeholder="Qo'shimcha ma'lumot"></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Arizani yuborish</button>
+          </form>
+
+          <div id="result" class="result-box"></div>
+        </div>
+
+        <div class="info-stack">
+          <div class="info-card">
+            <h3>Kerakli hujjatlar</h3>
+            <p>Bola maktabga qabul qilinishi uchun odatda quyidagilar kerak bo‘ladi:</p>
+            <ul>
+              <li>Bolaning tug‘ilganlik guvohnomasi</li>
+              <li>Ota-ona pasport nusxasi</li>
+              <li>Yashash joyi ma’lumotnomasi</li>
+              <li>3x4 rasm</li>
+              <li>Tibbiy ma’lumotnoma</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <h3>Eslatma</h3>
+            <p>
+              Ariza yuborilgandan keyin maxsus ID yaratiladi.
+              Shu ID orqali ariza holatini tekshirishingiz mumkin.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tekshirish">
+    <div class="container">
+      <h2 class="section-title">Ariza holatini tekshirish</h2>
+      <p class="section-subtitle">
+        Ariza raqamini kiriting va qabul holatini ko‘ring.
+      </p>
+
+      <div class="lookup-box">
+        <h3>ID orqali tekshirish</h3>
+        <label for="lookupId">Ariza ID</label>
+        <input type="text" id="lookupId" placeholder="Masalan: EDU-123456" />
+
+        <div class="lookup-actions">
+          <button class="btn btn-primary" type="button" id="lookupBtn">Tekshirish</button>
+        </div>
+
+        <div id="lookupResult" class="lookup-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tarix">
+    <div class="container">
+      <h2 class="section-title">Mening arizalarim</h2>
+      <p class="section-subtitle">
+        Shu brauzerda yuborilgan arizalar shu yerda ko‘rinadi.
+      </p>
+
+      <div id="historyGrid" class="history-grid"></div>
+    </div>
+  </section>
+
+  <section id="boglanish">
+    <div class="container">
+      <h2 class="section-title">Xabar yuborish</h2>
+      <p class="section-subtitle">
+        Savol va takliflaringizni yuborishingiz mumkin.
+      </p>
+
+      <div class="contact-layout">
+        <div class="contact-card">
+          <h3>Aloqa ma’lumotlari</h3>
+          <p><strong>Mas’ul shaxs:</strong> Nodirbek Sharipov</p>
+          <p><strong>Telefon:</strong> +998 99 039 56 02</p>
+          <p><strong>Email:</strong> sharipovnodirbek618@gmail.com</p>
+          <p><strong>Manzil:</strong> So'x tumani Oftobru MFY</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>Xabar formasi</h3>
+          <input type="text" id="contactName" placeholder="Ismingiz" />
+          <input type="text" id="contactPhone" placeholder="Telefon raqamingiz" />
+          <textarea rows="5" id="contactMessage" placeholder="Xabaringiz"></textarea>
+          <button class="btn btn-primary" type="button" id="sendMessageBtn">Yuborish</button>
+          <div id="messageResult" class="message-result"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h3>1-Sinf Edu Portal</h3>
+        <p>Ota-ona kabineti orqali bola ma’lumotlarini yuborish va holatini tekshirish mumkin.</p>
+      </div>
+
+      <div>
+        <h3>Bo'limlar</h3>
+        <p><a href="#ariza">Ariza yuborish</a></p>
+        <p><a href="#tekshirish">Holatini tekshirish</a></p>
+        <p><a href="#boglanish">Xabar yuborish</a></p>
+      </div>
+
+      <div>
+        <h3>Aloqa</h3>
+        <p><strong>Telefon:</strong> +998 99 039 56 02</p>
+        <p><strong>Email:</strong> sharipovnodirbek618@gmail.com</p>
+        <p><strong>Manzil:</strong> So'x tumani Oftobru MFY</p>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      © 2026 1-Sinf Edu Portal
+    </div>
+  </footer>
+
+  <script>
+    const schoolData = {
+      "Qoraqalpog'iston Respublikasi": {
+        "Nukus shahri": ["1-sonli maktab", "2-sonli maktab"],
+        "Amudaryo tumani": ["5-sonli maktab"],
+        "Beruniy tumani": ["12-sonli maktab"]
+      },
+      "Andijon viloyati": {
+        "Andijon shahri": ["1-sonli maktab", "15-sonli maktab"],
+        "Asaka tumani": ["9-sonli maktab", "27-sonli maktab"],
+        "Baliqchi tumani": ["3-sonli maktab"]
+      },
+      "Buxoro viloyati": {
+        "Buxoro shahri": ["4-sonli maktab", "10-sonli maktab"],
+        "G'ijduvon tumani": ["7-sonli maktab"],
+        "Kogon tumani": ["11-sonli maktab"]
+      },
+      "Jizzax viloyati": {
+        "Jizzax shahri": ["2-sonli maktab"],
+        "Zomin tumani": ["14-sonli maktab"],
+        "G'allaorol tumani": ["6-sonli maktab"]
+      },
+      "Qashqadaryo viloyati": {
+        "Qarshi shahri": ["1-sonli maktab", "8-sonli maktab"],
+        "Shahrisabz tumani": ["5-sonli maktab"],
+        "Koson tumani": ["9-sonli maktab"]
+      },
+      "Navoiy viloyati": {
+        "Navoiy shahri": ["3-sonli maktab"],
+        "Karmana tumani": ["12-sonli maktab"],
+        "Xatirchi tumani": ["18-sonli maktab"]
+      },
+      "Namangan viloyati": {
+        "Namangan shahri": ["6-sonli maktab", "21-sonli maktab"],
+        "Chust tumani": ["13-sonli maktab"],
+        "Pop tumani": ["4-sonli maktab"]
+      },
+      "Samarqand viloyati": {
+        "Samarqand shahri": ["12-sonli maktab", "33-sonli maktab"],
+        "Urgut tumani": ["7-sonli maktab", "14-sonli maktab"],
+        "Pastdarg'om tumani": ["9-sonli maktab"]
+      },
+      "Surxondaryo viloyati": {
+        "Termiz shahri": ["2-sonli maktab"],
+        "Denov tumani": ["11-sonli maktab"],
+        "Sherobod tumani": ["5-sonli maktab"]
+      },
+      "Sirdaryo viloyati": {
+        "Guliston shahri": ["1-sonli maktab"],
+        "Sirdaryo tumani": ["8-sonli maktab"],
+        "Yangiyer shahri": ["3-sonli maktab"]
+      },
+      "Toshkent viloyati": {
+        "Nurafshon shahri": ["4-sonli maktab"],
+        "Chirchiq shahri": ["7-sonli maktab"],
+        "Zangiota tumani": ["15-sonli maktab"]
+      },
+      "Farg'ona viloyati": {
+        "Farg'ona shahri": ["9-sonli maktab"],
+        "Qo'qon shahri": ["5-sonli maktab", "22-sonli maktab"],
+        "So'x tumani": ["30-sonli maktab", "17-sonli maktab"]
+      },
+      "Xorazm viloyati": {
+        "Urganch shahri": ["2-sonli maktab"],
+        "Xiva tumani": ["6-sonli maktab"],
+        "Hazorasp tumani": ["10-sonli maktab"]
+      },
+      "Toshkent shahri": {
+        "Yunusobod tumani": ["45-sonli maktab", "58-sonli maktab", "81-sonli maktab"],
+        "Chilonzor tumani": ["120-sonli maktab", "173-sonli maktab"],
+        "Olmazor tumani": ["34-sonli maktab"]
+      }
+    };
+
+    const STORAGE_KEY = "edu_portal_applications";
+    const MESSAGE_KEY = "edu_portal_messages";
+
+    const regionSelect = document.getElementById("region");
+    const districtSelect = document.getElementById("district");
+    const schoolSelect = document.getElementById("school");
+    const admissionForm = document.getElementById("admissionForm");
+    const resultBox = document.getElementById("result");
+    const lookupBtn = document.getElementById("lookupBtn");
+    const lookupId = document.getElementById("lookupId");
+    const lookupResult = document.getElementById("lookupResult");
+    const historyGrid = document.getElementById("historyGrid");
+
+    const studentPhoto = document.getElementById("studentPhoto");
+    const photoPreview = document.getElementById("photoPreview");
+    let studentPhotoData = "";
+
+    const contactName = document.getElementById("contactName");
+    const contactPhone = document.getElementById("contactPhone");
+    const contactMessage = document.getElementById("contactMessage");
+    const sendMessageBtn = document.getElementById("sendMessageBtn");
+    const messageResult = document.getElementById("messageResult");
+
+    function populateRegions() {
+      regionSelect.innerHTML = '<option value="">Viloyatni tanlang</option>';
+      Object.keys(schoolData).forEach((region) => {
+        const option = document.createElement("option");
+        option.value = region;
+        option.textContent = region;
+        regionSelect.appendChild(option);
+      });
+    }
+
+    function resetSelect(select, placeholder) {
+      select.innerHTML = "";
+      const option = document.createElement("option");
+      option.value = "";
+      option.textContent = placeholder;
+      select.appendChild(option);
+    }
+
+    regionSelect.addEventListener("change", function () {
+      const region = this.value;
+      resetSelect(districtSelect, region ? "Tumanni tanlang" : "Avval viloyatni tanlang");
+      resetSelect(schoolSelect, "Avval tumanni tanlang");
+      schoolSelect.disabled = true;
+
+      if (!region) {
+        districtSelect.disabled = true;
+        return;
+      }
+
+      districtSelect.disabled = false;
+
+      Object.keys(schoolData[region]).forEach((district) => {
+        const option = document.createElement("option");
+        option.value = district;
+        option.textContent = district;
+        districtSelect.appendChild(option);
+      });
+    });
+
+    districtSelect.addEventListener("change", function () {
+      const region = regionSelect.value;
+      const district = this.value;
+      resetSelect(schoolSelect, district ? "Maktabni tanlang" : "Avval tumanni tanlang");
+
+      if (!region || !district) {
+        schoolSelect.disabled = true;
+        return;
+      }
+
+      schoolSelect.disabled = false;
+
+      schoolData[region][district].forEach((school) => {
+        const option = document.createElement("option");
+        option.value = school;
+        option.textContent = school;
+        schoolSelect.appendChild(option);
+      });
+    });
+
+    studentPhoto.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+
+      if (!file) {
+        studentPhotoData = "";
+        photoPreview.innerHTML = "Rasm tanlanmagan";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function () {
+        studentPhotoData = reader.result;
+        photoPreview.innerHTML = '<img src="' + studentPhotoData + '" alt="Talaba rasmi">';
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function getApplications() {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    }
+
+    function saveApplications(applications) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(applications));
+    }
+
+    function getMessages() {
+      return JSON.parse(localStorage.getItem(MESSAGE_KEY) || "[]");
+    }
+
+    function saveMessages(messages) {
+      localStorage.setItem(MESSAGE_KEY, JSON.stringify(messages));
+    }
+
+    function createApplicationId() {
+      return "EDU-" + Math.floor(100000 + Math.random() * 900000);
+    }
+
+    function renderHistory() {
+      const applications = getApplications().slice().reverse();
+      historyGrid.innerHTML = "";
+
+      if (!applications.length) {
+        historyGrid.innerHTML = `
+          <div class="history-card">
+            <h3>Hozircha ariza yo‘q</h3>
+            <p>Yangi ariza yuborilgandan keyin shu yerda ko‘rinadi.</p>
+          </div>
+        `;
+        return;
+      }
+
+      applications.slice(0, 6).forEach((item) => {
+        const card = document.createElement("div");
+        card.className = "history-card";
+        card.innerHTML = `
+          <h3>${item.applicationId}</h3>
+          <p><strong>Bola:</strong> ${item.childName}</p>
+          <p><strong>Hudud:</strong> ${item.region}, ${item.district}</p>
+          <p><strong>Maktab:</strong> ${item.school}</p>
+          <p><strong>Status:</strong> ${item.status}</p>
+          <small>${item.createdAt}</small>
+        `;
+        historyGrid.appendChild(card);
+      });
+    }
+
+    admissionForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const application = {
+        applicationId: createApplicationId(),
+        region: document.getElementById("region").value.trim(),
+        district: document.getElementById("district").value.trim(),
+        school: document.getElementById("school").value.trim(),
+        childName: document.getElementById("childName").value.trim(),
+        birthDate: document.getElementById("birthDate").value,
+        gender: document.getElementById("gender").value.trim(),
+        parentName: document.getElementById("parentName").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        address: document.getElementById("address").value.trim(),
+        message: document.getElementById("message").value.trim(),
+        createdAt: new Date().toLocaleString("uz-UZ"),
+        status: "Qabul qilindi",
+        photo: studentPhotoData
+      };
+
+      if (
+        !application.region ||
+        !application.district ||
+        !application.school ||
+        !application.childName ||
+        !application.birthDate ||
+        !application.gender ||
+        !application.parentName ||
+        !application.phone ||
+        !application.address
+      ) {
+        resultBox.style.display = "block";
+        resultBox.style.background = "#ffebee";
+        resultBox.style.color = "#b71c1c";
+        resultBox.innerHTML = "Iltimos, barcha majburiy maydonlarni to'ldiring.";
+        return;
+      }
+
+      const phoneRegex = /^[+]?[0-9\s-]{9,20}$/;
+      if (!phoneRegex.test(application.phone)) {
+        resultBox.style.display = "block";
+        resultBox.style.background = "#ffebee";
+        resultBox.style.color = "#b71c1c";
+        resultBox.innerHTML = "Telefon raqamini to'g'ri kiriting.";
+        return;
+      }
+
+      const applications = getApplications();
+      applications.push(application);
+      saveApplications(applications);
+
+      resultBox.style.display = "block";
+      resultBox.style.background = "#e8f5e9";
+      resultBox.style.color = "#1b5e20";
+      resultBox.innerHTML = `
+        Ariza muvaffaqiyatli yuborildi!<br><br>
+        Ariza raqami: <strong>${application.applicationId}</strong><br>
+        Bola: ${application.childName}<br>
+        Maktab: ${application.school}<br>
+        Holat: ${application.status}
+      `;
+
+      admissionForm.reset();
+      studentPhotoData = "";
+      photoPreview.innerHTML = "Rasm tanlanmagan";
+      districtSelect.disabled = true;
+      schoolSelect.disabled = true;
+      resetSelect(districtSelect, "Avval viloyatni tanlang");
+      resetSelect(schoolSelect, "Avval tumanni tanlang");
+      renderHistory();
+    });
+
+    lookupBtn.addEventListener("click", function () {
+      const id = lookupId.value.trim().toUpperCase();
+      const applications = getApplications();
+      const found = applications.find((item) => item.applicationId === id);
+
+      lookupResult.style.display = "block";
+
+      if (!id) {
+        lookupResult.style.background = "#ffebee";
+        lookupResult.style.color = "#b71c1c";
+        lookupResult.innerHTML = "Avval ariza raqamini kiriting.";
+        return;
+      }
+
+      if (!found) {
+        lookupResult.style.background = "#ffebee";
+        lookupResult.style.color = "#b71c1c";
+        lookupResult.innerHTML = "Bunday ariza topilmadi.";
+        return;
+      }
+
+      lookupResult.style.background = "#e8f5e9";
+      lookupResult.style.color = "#1b5e20";
+      lookupResult.innerHTML = `
+        Ariza topildi!<br><br>
+        Ariza raqami: <strong>${found.applicationId}</strong><br>
+        Bola: ${found.childName}<br>
+        Viloyat: ${found.region}<br>
+        Tuman / shahar: ${found.district}<br>
+        Maktab: ${found.school}<br>
+        Holat: ${found.status}<br>
+        Sana: ${found.createdAt}
+      `;
+    });
+
+    sendMessageBtn.addEventListener("click", function () {
+      const name = contactName.value.trim();
+      const phone = contactPhone.value.trim();
+      const message = contactMessage.value.trim();
+
+      if (!name || !phone || !message) {
+        messageResult.style.display = "block";
+        messageResult.style.background = "#ffebee";
+        messageResult.style.color = "#b71c1c";
+        messageResult.innerHTML = "Iltimos, ism, telefon va xabarni to‘ldiring.";
+        return;
+      }
+
+      const messages = getMessages();
+      messages.push({
+        name,
+        phone,
+        message,
+        createdAt: new Date().toLocaleString("uz-UZ")
+      });
+      saveMessages(messages);
+
+      messageResult.style.display = "block";
+      messageResult.style.background = "#e8f5e9";
+      messageResult.style.color = "#1b5e20";
+      messageResult.innerHTML = "Xabaringiz muvaffaqiyatli yuborildi.";
+
+      contactName.value = "";
+      contactPhone.value = "";
+      contactMessage.value = "";
+    });
+
+    populateRegions();
+    renderHistory();
+  </script>
+</body>
+</html>
