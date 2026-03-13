@@ -5,643 +5,138 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1-Sinf Edu Portal</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    :root {
-      --primary: #0d47a1;
-      --secondary: #1565c0;
-      --accent: #43a047;
-      --accent-dark: #2e7d32;
-      --bg: #f4f7fc;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --white: #ffffff;
-      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      --radius: 16px;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .container {
-      width: 92%;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      padding: 18px 0;
-      flex-wrap: wrap;
-    }
-
-    .brand-wrap {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .logo-circle {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ffffff, #dbeafe);
-      color: #0d47a1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      flex-shrink: 0;
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    }
-
-    #logoBox img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .brand h1 {
-      font-size: 30px;
-      margin: 0;
-    }
-
-    .brand p {
-      color: #dbeafe;
-      font-size: 15px;
-      margin-top: 4px;
-    }
-
-    .top-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: 0.25s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-dark);
-    }
-
-    .btn-light {
-      background: rgba(255, 255, 255, 0.15);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-secondary {
-      background: #e8f0fe;
-      color: var(--primary);
-    }
-
-    .btn-print {
-      background: #6d4c41;
-      color: white;
-    }
-
-    nav {
-      background: #0b3d91;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 24px;
-      padding: 14px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 15px;
-    }
-
-    nav a:hover {
-      color: #bfdbfe;
-    }
-
-    .hero {
-      min-height: 620px;
-      display: flex;
-      align-items: center;
-      background-image:
-        linear-gradient(rgba(13, 71, 161, 0.55), rgba(13, 71, 161, 0.55)),
-        url("https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1600&q=80");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: white;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 30px;
-      align-items: center;
-      width: 100%;
-    }
-
-    .hero-content h2 {
-      font-size: 56px;
-      line-height: 1.15;
-      margin-bottom: 18px;
-    }
-
-    .hero-content p {
-      font-size: 21px;
-      max-width: 680px;
-      margin-bottom: 24px;
-      color: #eef6ff;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 26px;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      max-width: 900px;
-    }
-
-    .stat {
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 14px;
-      padding: 16px;
-      text-align: center;
-    }
-
-    .stat h3 {
-      font-size: 28px;
-      margin-bottom: 6px;
-    }
-
-    .stat p {
-      font-size: 14px;
-      margin: 0;
-      color: #eff6ff;
-    }
-
-    .hero-card,
-    .feature-card,
-    .step-card,
-    .info-card,
-    .form-card,
-    .lookup-box,
-    .contact-card,
-    .history-card,
-    .table-card {
-      background: white;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 26px;
-    }
-
-    .hero-card h3,
-    .feature-card h3,
-    .step-card h3,
-    .info-card h3,
-    .form-card h3,
-    .contact-card h3,
-    .history-card h3,
-    .table-card h3 {
-      color: var(--primary);
-      margin-bottom: 12px;
-      font-size: 22px;
-    }
-
-    .hero-card ul,
-    .info-card ul {
-      padding-left: 20px;
-      color: var(--muted);
-    }
-
-    .info-card ul li {
-      margin-bottom: 8px;
-    }
-
-    section {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 38px;
-      color: var(--primary);
-      margin-bottom: 14px;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: var(--muted);
-      max-width: 760px;
-      margin: 0 auto 40px;
-      font-size: 17px;
-    }
-
-    .features,
-    .steps,
-    .footer-grid,
-    .history-grid,
-    .stats-panel {
-      display: grid;
-      gap: 22px;
-    }
-
-    .features {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .steps {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .stats-panel {
-      grid-template-columns: repeat(4, 1fr);
-      margin-bottom: 24px;
-    }
-
-    .mini-stat {
-      background: white;
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      padding: 20px;
-      text-align: center;
-    }
-
-    .mini-stat h4 {
-      color: var(--primary);
-      font-size: 28px;
-      margin-bottom: 6px;
-    }
-
-    .mini-stat p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .step-card {
-      position: relative;
-      padding-top: 58px;
-    }
-
-    .step-card::before {
-      content: "";
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .portal-layout,
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .form-card p {
-      color: var(--muted);
-      margin-bottom: 22px;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .form-group.full {
-      grid-column: 1 / -1;
-    }
-
-    .form-group label,
-    .lookup-box label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 700;
-      color: var(--primary);
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 14px 15px;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      font-size: 15px;
-      outline: none;
-    }
-
-    .form-note {
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 12px;
-    }
-
-    .result-box,
-    .lookup-result {
-      margin-top: 18px;
-      display: none;
-      border-radius: 12px;
-      padding: 18px;
-      font-weight: 700;
-      line-height: 1.7;
-    }
-
-    .info-stack {
-      display: grid;
-      gap: 20px;
-    }
-
-    .lookup-actions,
-    .table-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 14px;
-      flex-wrap: wrap;
-    }
-
-    .contact-card p {
-      margin-bottom: 12px;
-    }
-
-    .contact-card input,
-    .contact-card textarea {
-      margin-bottom: 14px;
-    }
-
-    .history-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .history-card small {
-      color: var(--muted);
-      display: block;
-      margin-top: 8px;
-    }
-
-    .feature-card:hover,
-    .step-card:hover,
-    .info-card:hover,
-    .history-card:hover,
-    .mini-stat:hover {
-      transform: translateY(-4px);
-      transition: 0.3s;
-    }
-
-    .table-wrap {
-      overflow-x: auto;
-      margin-top: 16px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 1150px;
-    }
-
-    th, td {
-      border-bottom: 1px solid #e5e7eb;
-      padding: 12px;
-      text-align: left;
-      font-size: 14px;
-      vertical-align: top;
-    }
-
-    th {
-      background: #f1f5ff;
-      color: var(--primary);
-    }
-
-    .status-badge {
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      display: inline-block;
-    }
-
-    .status-qabul {
-      background: #e8f5e9;
-      color: #1b5e20;
-    }
-
-    .status-korib {
-      background: #fff8e1;
-      color: #8d6e00;
-    }
-
-    .status-tasdiq {
-      background: #e3f2fd;
-      color: #0d47a1;
-    }
-
-    .status-bekor {
-      background: #ffebee;
-      color: #b71c1c;
-    }
-
-    .action-select {
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 13px;
-    }
-
-    .small-btn {
-      padding: 8px 12px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .small-danger {
-      background: #ef5350;
-      color: white;
-    }
-
-    .photo-preview {
-      width: 120px;
-      height: 150px;
-      border: 2px dashed #b0bec5;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: #f9fbff;
-      color: #607d8b;
-      font-size: 13px;
-    }
-
-    .photo-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    #adminPanel {
-      display: none;
-      background: #eef4ff;
-      padding: 40px 0;
-    }
-
-    footer {
-      background: #0a2d6d;
-      color: #eaf2ff;
-      padding: 60px 0 24px;
-      margin-top: 20px;
-    }
-
-    .footer-grid {
-      grid-template-columns: 1.1fr 0.9fr 0.8fr;
-      margin-bottom: 26px;
-    }
-
-    footer h3 {
-      font-size: 22px;
-      margin-bottom: 12px;
-      color: #ffffff;
-    }
-
-    footer p,
-    footer a {
-      color: #d9e7ff;
-      text-decoration: none;
-      margin-bottom: 8px;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.14);
-      padding-top: 20px;
-      text-align: center;
-      color: #cfe0ff;
-      font-size: 14px;
-    }
-
-    @media (max-width: 1024px) {
-      .features,
-      .steps,
-      .history-grid,
-      .stats-panel {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hero-grid,
-      .portal-layout,
-      .contact-layout,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .brand h1 {
-        font-size: 24px;
-      }
-
-      .hero {
-        min-height: 540px;
-      }
-
-      .hero-content h2 {
-        font-size: 38px;
-      }
-
-      .hero-content p {
-        font-size: 18px;
-      }
-
-      .hero-stats,
-      .features,
-      .steps,
-      .history-grid,
-      .form-grid,
-      .stats-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .section-title {
-        font-size: 30px;
-      }
-
-      nav ul {
-        gap: 14px;
-      }
-    }
-
-    @media print {
-      header, nav, .hero, #imkoniyatlar, #bosqichlar, #boglanish, footer,
-      .lookup-actions, .table-actions, .btn, .small-btn, #adminPanel {
-        display: none !important;
-      }
-
-      body {
-        background: white;
-      }
-
-      .table-card, .form-card, .lookup-box, .info-card {
-        box-shadow: none;
-        border: 1px solid #ddd;
-      }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+    :root{
+      --primary:#0d47a1;--secondary:#1565c0;--accent:#43a047;--accent-dark:#2e7d32;
+      --bg:#f4f7fc;--text:#1f2937;--muted:#6b7280;--white:#fff;
+      --shadow:0 10px 25px rgba(0,0,0,.08);--radius:16px
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--text);line-height:1.6}
+    .container{width:92%;max-width:1280px;margin:0 auto}
+    header{
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.15)
+    }
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:18px 0;flex-wrap:wrap}
+    .brand-wrap{display:flex;align-items:center;gap:16px}
+    .logo-circle{
+      width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#fff,#dbeafe);
+      color:#0d47a1;display:flex;align-items:center;justify-content:center;font-size:28px;
+      font-weight:bold;letter-spacing:1px;flex-shrink:0;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.15)
+    }
+    #logoBox img{width:100%;height:100%;object-fit:cover}
+    .brand h1{font-size:30px}
+    .brand p{color:#dbeafe;font-size:15px;margin-top:4px}
+    .top-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:700;transition:.25s;border:none;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:var(--accent-dark)}
+    .btn-light{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2)}
+    .btn-secondary{background:#e8f0fe;color:var(--primary)}
+    .btn-print{background:#6d4c41;color:#fff}
+    nav{background:#0b3d91}
+    nav ul{list-style:none;display:flex;justify-content:center;flex-wrap:wrap;gap:24px;padding:14px 0}
+    nav a{color:#fff;text-decoration:none;font-weight:700;font-size:15px}
+    nav a:hover{color:#bfdbfe}
+    .hero{
+      min-height:620px;display:flex;align-items:center;
+      background-image:linear-gradient(rgba(13,71,161,.55),rgba(13,71,161,.55)),
+      url("https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1600&q=80");
+      background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff
+    }
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;width:100%}
+    .hero-content h2{font-size:56px;line-height:1.15;margin-bottom:18px}
+    .hero-content p{font-size:21px;max-width:680px;margin-bottom:24px;color:#eef6ff}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:900px}
+    .stat{
+      background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);
+      border-radius:14px;padding:16px;text-align:center
+    }
+    .stat h3{font-size:28px;margin-bottom:6px}
+    .stat p{font-size:14px;color:#eff6ff}
+    .hero-card,.feature-card,.step-card,.info-card,.form-card,.lookup-box,.contact-card,.history-card,.table-card{
+      background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:26px
+    }
+    .hero-card h3,.feature-card h3,.step-card h3,.info-card h3,.form-card h3,.contact-card h3,.history-card h3,.table-card h3{
+      color:var(--primary);margin-bottom:12px;font-size:22px
+    }
+    .hero-card ul,.info-card ul{padding-left:20px;color:var(--muted)}
+    .info-card ul li{margin-bottom:8px}
+    section{padding:80px 0}
+    .section-title{text-align:center;font-size:38px;color:var(--primary);margin-bottom:14px}
+    .section-subtitle{text-align:center;color:var(--muted);max-width:760px;margin:0 auto 40px;font-size:17px}
+    .features,.steps,.footer-grid,.history-grid,.stats-panel{display:grid;gap:22px}
+    .features{grid-template-columns:repeat(4,1fr)}
+    .steps{grid-template-columns:repeat(4,1fr)}
+    .stats-panel{grid-template-columns:repeat(4,1fr);margin-bottom:24px}
+    .mini-stat{background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:20px;text-align:center}
+    .mini-stat h4{color:var(--primary);font-size:28px;margin-bottom:6px}
+    .mini-stat p{color:var(--muted);font-size:14px}
+    .step-card{position:relative;padding-top:58px}
+    .step-card::before{
+      content:"";position:absolute;top:20px;left:20px;width:30px;height:30px;border-radius:50%;background:var(--accent)
+    }
+    .portal-layout,.contact-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
+    .form-card p{color:var(--muted);margin-bottom:22px}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .form-group.full{grid-column:1/-1}
+    .form-group label,.lookup-box label{display:block;margin-bottom:8px;font-weight:700;color:var(--primary)}
+    input,select,textarea{
+      width:100%;padding:14px 15px;border:1px solid #d1d5db;border-radius:10px;font-size:15px;outline:none
+    }
+    .form-note{font-size:14px;color:var(--muted);margin-top:12px}
+    .result-box,.lookup-result,.message-result{
+      margin-top:18px;display:none;border-radius:12px;padding:18px;font-weight:700;line-height:1.7
+    }
+    .info-stack{display:grid;gap:20px}
+    .lookup-actions,.table-actions{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+    .contact-card p{margin-bottom:12px}
+    .contact-card input,.contact-card textarea{margin-bottom:14px}
+    .history-grid{grid-template-columns:repeat(3,1fr)}
+    .history-card small{color:var(--muted);display:block;margin-top:8px}
+    .feature-card:hover,.step-card:hover,.info-card:hover,.history-card:hover,.mini-stat:hover{transform:translateY(-4px);transition:.3s}
+    .table-wrap{overflow-x:auto;margin-top:16px}
+    table{width:100%;border-collapse:collapse;min-width:1200px}
+    th,td{border-bottom:1px solid #e5e7eb;padding:12px;text-align:left;font-size:14px;vertical-align:top}
+    th{background:#f1f5ff;color:var(--primary)}
+    .status-badge{padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;display:inline-block}
+    .status-qabul{background:#e8f5e9;color:#1b5e20}
+    .status-korib{background:#fff8e1;color:#8d6e00}
+    .status-tasdiq{background:#e3f2fd;color:#0d47a1}
+    .status-bekor{background:#ffebee;color:#b71c1c}
+    .action-select{padding:8px;border-radius:8px;border:1px solid #ccc;font-size:13px}
+    .small-btn{padding:8px 12px;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700}
+    .small-danger{background:#ef5350;color:#fff}
+    .photo-preview{
+      width:120px;height:150px;border:2px dashed #b0bec5;border-radius:10px;display:flex;align-items:center;
+      justify-content:center;overflow:hidden;background:#f9fbff;color:#607d8b;font-size:13px
+    }
+    .photo-preview img{width:100%;height:100%;object-fit:cover}
+    #adminPanel{display:none;background:#eef4ff;padding:40px 0}
+    footer{background:#0a2d6d;color:#eaf2ff;padding:60px 0 24px;margin-top:20px}
+    .footer-grid{grid-template-columns:1.1fr .9fr .8fr;margin-bottom:26px}
+    footer h3{font-size:22px;margin-bottom:12px;color:#fff}
+    footer p,footer a{color:#d9e7ff;text-decoration:none;margin-bottom:8px}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;text-align:center;color:#cfe0ff;font-size:14px}
+    @media (max-width:1024px){
+      .features,.steps,.history-grid,.stats-panel{grid-template-columns:repeat(2,1fr)}
+      .hero-grid,.portal-layout,.contact-layout,.footer-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:768px){
+      .brand h1{font-size:24px}
+      .hero{min-height:540px}
+      .hero-content h2{font-size:38px}
+      .hero-content p{font-size:18px}
+      .hero-stats,.features,.steps,.history-grid,.form-grid,.stats-panel{grid-template-columns:1fr}
+      .section-title{font-size:30px}
+      nav ul{gap:14px}
+    }
+    @media print{
+      header,nav,.hero,#imkoniyatlar,#bosqichlar,#boglanish,footer,.lookup-actions,.table-actions,.btn,.small-btn,#adminPanel{display:none!important}
+      body{background:#fff}
+      .table-card,.form-card,.lookup-box,.info-card{box-shadow:none;border:1px solid #ddd}
     }
   </style>
 </head>
@@ -689,22 +184,10 @@
         </div>
 
         <div class="hero-stats">
-          <div class="stat">
-            <h3>14+</h3>
-            <p>Hududlar</p>
-          </div>
-          <div class="stat">
-            <h3>ID</h3>
-            <p>Avtomatik raqam</p>
-          </div>
-          <div class="stat">
-            <h3>24/7</h3>
-            <p>Onlayn qabul</p>
-          </div>
-          <div class="stat">
-            <h3>Admin</h3>
-            <p>Jadval ko‘rinishi</p>
-          </div>
+          <div class="stat"><h3>14+</h3><p>Hududlar</p></div>
+          <div class="stat"><h3>ID</h3><p>Avtomatik raqam</p></div>
+          <div class="stat"><h3>24/7</h3><p>Onlayn qabul</p></div>
+          <div class="stat"><h3>Admin</h3><p>Jadval ko‘rinishi</p></div>
         </div>
       </div>
 
@@ -727,22 +210,10 @@
       <p class="section-subtitle">Ota-onalar uchun qulay, sodda va tushunarli online qabul tizimi.</p>
 
       <div class="features">
-        <div class="feature-card">
-          <h3>Hudud tanlash</h3>
-          <p>Viloyat, tuman va maktab ketma-ket tanlanadi.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Ariza yuborish</h3>
-          <p>Barcha ma'lumotlar kiritilib ariza jo'natiladi.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Avtomatik ID</h3>
-          <p>Har bir ariza uchun maxsus ID yaratiladi.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Rasm yuklash</h3>
-          <p>3x4 talaba rasmi yuklab birga saqlanadi.</p>
-        </div>
+        <div class="feature-card"><h3>Hudud tanlash</h3><p>Viloyat, tuman va maktab ketma-ket tanlanadi.</p></div>
+        <div class="feature-card"><h3>Ariza yuborish</h3><p>Barcha ma'lumotlar kiritilib ariza jo'natiladi.</p></div>
+        <div class="feature-card"><h3>Avtomatik ID</h3><p>Har bir ariza uchun maxsus ID yaratiladi.</p></div>
+        <div class="feature-card"><h3>Xabar yuborish</h3><p>Xabar bo‘limi ishlaydi va admin qismida saqlanadi.</p></div>
       </div>
     </div>
   </section>
@@ -753,22 +224,10 @@
       <p class="section-subtitle">Ariza topshirish tartibi sodda va aniq ko'rinishda.</p>
 
       <div class="steps">
-        <div class="step-card">
-          <h3>Viloyatni tanlash</h3>
-          <p>Avval viloyat va tuman tanlanadi.</p>
-        </div>
-        <div class="step-card">
-          <h3>Maktabni tanlash</h3>
-          <p>Kerakli maktab ro'yxatdan tanlanadi.</p>
-        </div>
-        <div class="step-card">
-          <h3>Ma'lumot kiritish</h3>
-          <p>Bola va ota-ona haqidagi ma'lumotlar yoziladi.</p>
-        </div>
-        <div class="step-card">
-          <h3>Arizani yuborish</h3>
-          <p>Ariza yuborilib, maxsus ID olinadi.</p>
-        </div>
+        <div class="step-card"><h3>Viloyatni tanlash</h3><p>Avval viloyat va tuman tanlanadi.</p></div>
+        <div class="step-card"><h3>Maktabni tanlash</h3><p>Kerakli maktab ro'yxatdan tanlanadi.</p></div>
+        <div class="step-card"><h3>Ma'lumot kiritish</h3><p>Bola va ota-ona haqidagi ma'lumotlar yoziladi.</p></div>
+        <div class="step-card"><h3>Arizani yuborish</h3><p>Ariza yuborilib, maxsus ID olinadi.</p></div>
       </div>
     </div>
   </section>
@@ -915,22 +374,10 @@
       <p class="section-subtitle">Jadval ko‘rinishida arizalarni ko‘rish, qidirish, status berish va o‘chirish mumkin.</p>
 
       <div class="stats-panel">
-        <div class="mini-stat">
-          <h4 id="totalCount">0</h4>
-          <p>Jami arizalar</p>
-        </div>
-        <div class="mini-stat">
-          <h4 id="newCount">0</h4>
-          <p>Qabul qilindi</p>
-        </div>
-        <div class="mini-stat">
-          <h4 id="reviewCount">0</h4>
-          <p>Ko‘rib chiqilmoqda</p>
-        </div>
-        <div class="mini-stat">
-          <h4 id="approvedCount">0</h4>
-          <p>Tasdiqlangan</p>
-        </div>
+        <div class="mini-stat"><h4 id="totalCount">0</h4><p>Jami arizalar</p></div>
+        <div class="mini-stat"><h4 id="newCount">0</h4><p>Qabul qilindi</p></div>
+        <div class="mini-stat"><h4 id="reviewCount">0</h4><p>Ko‘rib chiqilmoqda</p></div>
+        <div class="mini-stat"><h4 id="approvedCount">0</h4><p>Tasdiqlangan</p></div>
       </div>
 
       <div class="table-card">
@@ -990,10 +437,11 @@
 
         <div class="contact-card">
           <h3>Xabar yuborish</h3>
-          <input type="text" placeholder="Ismingiz" />
-          <input type="text" placeholder="Telefon raqamingiz" />
-          <textarea rows="5" placeholder="Xabaringiz"></textarea>
-          <button class="btn btn-primary" type="button">Yuborish</button>
+          <input type="text" id="contactName" placeholder="Ismingiz" />
+          <input type="text" id="contactPhone" placeholder="Telefon raqamingiz" />
+          <textarea rows="5" id="contactMessage" placeholder="Xabaringiz"></textarea>
+          <button class="btn btn-primary" type="button" id="sendMessageBtn">Yuborish</button>
+          <div id="messageResult" class="message-result"></div>
         </div>
       </div>
     </div>
@@ -1003,26 +451,29 @@
     <div class="container">
       <div class="table-card">
         <h3>Admin panel</h3>
-        <p style="margin-bottom:16px; color:#6b7280;">
-          Bu demo admin panel. Parol brauzer ichida tekshiriladi.
-        </p>
+        <p style="margin-bottom:16px;color:#6b7280;">Bu demo admin panel. Parol brauzer ichida tekshiriladi.</p>
 
         <div class="stats-panel">
-          <div class="mini-stat">
-            <h4 id="adminTotal">0</h4>
-            <p>Jami ariza</p>
-          </div>
-          <div class="mini-stat">
-            <h4 id="adminApproved">0</h4>
-            <p>Tasdiqlangan</p>
-          </div>
-          <div class="mini-stat">
-            <h4 id="adminReview">0</h4>
-            <p>Ko‘rib chiqilmoqda</p>
-          </div>
-          <div class="mini-stat">
-            <h4 id="adminRejected">0</h4>
-            <p>Bekor qilingan</p>
+          <div class="mini-stat"><h4 id="adminTotal">0</h4><p>Jami ariza</p></div>
+          <div class="mini-stat"><h4 id="adminApproved">0</h4><p>Tasdiqlangan</p></div>
+          <div class="mini-stat"><h4 id="adminReview">0</h4><p>Ko‘rib chiqilmoqda</p></div>
+          <div class="mini-stat"><h4 id="adminRejected">0</h4><p>Bekor qilingan</p></div>
+        </div>
+
+        <div class="table-card" style="margin-top:20px;">
+          <h3>Yuborilgan xabarlar</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ism</th>
+                  <th>Telefon</th>
+                  <th>Xabar</th>
+                  <th>Sana</th>
+                </tr>
+              </thead>
+              <tbody id="messagesTableBody"></tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -1163,7 +614,8 @@
     };
 
     const STORAGE_KEY = "edu_portal_applications";
-    const ADMIN_PASSWORD = "12345";
+    const MESSAGE_KEY = "edu_portal_messages";
+    const ADMIN_PASSWORD = "Nodirbek2026";
     const LOGO_KEY = "edu_portal_logo";
 
     const regionSelect = document.getElementById("region");
@@ -1201,6 +653,13 @@
     const studentPhoto = document.getElementById("studentPhoto");
     const photoPreview = document.getElementById("photoPreview");
     let studentPhotoData = "";
+
+    const contactName = document.getElementById("contactName");
+    const contactPhone = document.getElementById("contactPhone");
+    const contactMessage = document.getElementById("contactMessage");
+    const sendMessageBtn = document.getElementById("sendMessageBtn");
+    const messageResult = document.getElementById("messageResult");
+    const messagesTableBody = document.getElementById("messagesTableBody");
 
     function populateRegions() {
       regionSelect.innerHTML = '<option value="">Viloyatni tanlang</option>';
@@ -1286,6 +745,14 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(applications));
     }
 
+    function getMessages() {
+      return JSON.parse(localStorage.getItem(MESSAGE_KEY) || "[]");
+    }
+
+    function saveMessages(messages) {
+      localStorage.setItem(MESSAGE_KEY, JSON.stringify(messages));
+    }
+
     function createApplicationId() {
       return "EDU-" + Math.floor(100000 + Math.random() * 900000);
     }
@@ -1359,11 +826,7 @@
       });
 
       if (!filtered.length) {
-        tableBody.innerHTML = `
-          <tr>
-            <td colspan="10">Arizalar topilmadi.</td>
-          </tr>
-        `;
+        tableBody.innerHTML = `<tr><td colspan="10">Arizalar topilmadi.</td></tr>`;
         updateCounters(applications);
         renderAdminStats();
         return;
@@ -1390,15 +853,34 @@
             </select>
           </td>
           <td>${item.createdAt}</td>
-          <td>
-            <button class="small-btn small-danger" onclick="deleteApplication('${item.applicationId}')">O'chirish</button>
-          </td>
+          <td><button class="small-btn small-danger" onclick="deleteApplication('${item.applicationId}')">O'chirish</button></td>
         `;
         tableBody.appendChild(row);
       });
 
       updateCounters(applications);
       renderAdminStats();
+    }
+
+    function renderMessages() {
+      const messages = getMessages().slice().reverse();
+      messagesTableBody.innerHTML = "";
+
+      if (!messages.length) {
+        messagesTableBody.innerHTML = `<tr><td colspan="4">Hozircha xabar yo‘q.</td></tr>`;
+        return;
+      }
+
+      messages.forEach((msg) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${msg.name}</td>
+          <td>${msg.phone}</td>
+          <td>${msg.message}</td>
+          <td>${msg.createdAt}</td>
+        `;
+        messagesTableBody.appendChild(row);
+      });
     }
 
     function changeStatus(id, newStatus) {
@@ -1431,38 +913,25 @@
       }
 
       const headers = [
-        "ID", "Bola", "Viloyat", "Tuman", "Maktab",
-        "Tugilgan sana", "Jinsi", "Ota-ona", "Telefon",
-        "Manzil", "Status", "Sana"
+        "ID","Bola","Viloyat","Tuman","Maktab","Tugilgan sana","Jinsi",
+        "Ota-ona","Telefon","Manzil","Status","Sana"
       ];
 
       const rows = applications.map(item => [
-        item.applicationId,
-        item.childName,
-        item.region,
-        item.district,
-        item.school,
-        item.birthDate,
-        item.gender,
-        item.parentName,
-        item.phone,
-        item.address,
-        item.status,
-        item.createdAt
+        item.applicationId,item.childName,item.region,item.district,item.school,
+        item.birthDate,item.gender,item.parentName,item.phone,item.address,item.status,item.createdAt
       ]);
 
       const csvContent = [headers, ...rows]
-        .map(row => row.map(value => `"${String(value).replace(/"/g, '""')}"`).join(","))
+        .map(row => row.map(value => `"${String(value).replace(/"/g,'""')}"`).join(","))
         .join("\n");
 
       const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
-
       const link = document.createElement("a");
       link.href = url;
       link.download = "arizalar.csv";
       link.click();
-
       URL.revokeObjectURL(url);
     }
 
@@ -1493,17 +962,7 @@
         photo: studentPhotoData
       };
 
-      if (
-        !application.region ||
-        !application.district ||
-        !application.school ||
-        !application.childName ||
-        !application.birthDate ||
-        !application.gender ||
-        !application.parentName ||
-        !application.phone ||
-        !application.address
-      ) {
+      if (!application.region || !application.district || !application.school || !application.childName || !application.birthDate || !application.gender || !application.parentName || !application.phone || !application.address) {
         resultBox.style.display = "block";
         resultBox.style.background = "#ffebee";
         resultBox.style.color = "#b71c1c";
@@ -1596,6 +1055,39 @@
       `;
     });
 
+    sendMessageBtn.addEventListener("click", function () {
+      const name = contactName.value.trim();
+      const phone = contactPhone.value.trim();
+      const message = contactMessage.value.trim();
+
+      if (!name || !phone || !message) {
+        messageResult.style.display = "block";
+        messageResult.style.background = "#ffebee";
+        messageResult.style.color = "#b71c1c";
+        messageResult.innerHTML = "Iltimos, ism, telefon va xabarni to‘ldiring.";
+        return;
+      }
+
+      const messages = getMessages();
+      messages.push({
+        name,
+        phone,
+        message,
+        createdAt: new Date().toLocaleString("uz-UZ")
+      });
+      saveMessages(messages);
+
+      messageResult.style.display = "block";
+      messageResult.style.background = "#e8f5e9";
+      messageResult.style.color = "#1b5e20";
+      messageResult.innerHTML = "Xabaringiz muvaffaqiyatli yuborildi.";
+
+      contactName.value = "";
+      contactPhone.value = "";
+      contactMessage.value = "";
+      renderMessages();
+    });
+
     showAllBtn.addEventListener("click", function () {
       document.getElementById("jadval").scrollIntoView({ behavior: "smooth" });
     });
@@ -1625,6 +1117,7 @@
       if (password === ADMIN_PASSWORD) {
         adminPanel.style.display = "block";
         renderAdminStats();
+        renderMessages();
         adminPanel.scrollIntoView({ behavior: "smooth" });
       } else if (password !== null) {
         alert("Parol noto‘g‘ri.");
@@ -1651,6 +1144,7 @@
     renderHistory();
     renderTable();
     renderAdminStats();
+    renderMessages();
     loadLogo();
   </script>
 </body>
