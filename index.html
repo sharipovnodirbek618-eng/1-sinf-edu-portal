@@ -5,225 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1-Sinf Edu Portal</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+    :root{
+      --primary:#0d47a1;--secondary:#1565c0;--accent:#43a047;--accent-dark:#2e7d32;
+      --bg:#f4f7fc;--text:#1f2937;--muted:#6b7280;--white:#fff;
+      --shadow:0 10px 25px rgba(0,0,0,.08);--radius:18px
     }
-
-    :root {
-      --primary: #0d47a1;
-      --secondary: #1565c0;
-      --accent: #43a047;
-      --accent-dark: #2e7d32;
-      --bg: #f4f7fc;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --white: #ffffff;
-      --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      --radius: 18px;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
+    body{background:var(--bg);color:var(--text);line-height:1.6}
+    .hero{
+      min-height:100vh;display:flex;align-items:center;padding:40px 20px;color:#fff;
       background:
-        linear-gradient(rgba(13, 71, 161, 0.55), rgba(13, 71, 161, 0.55)),
+        linear-gradient(rgba(13,71,161,.55),rgba(13,71,161,.55)),
         url("https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1600&q=80")
-        center/cover no-repeat;
-      color: white;
-      padding: 40px 20px;
+        center/cover no-repeat
     }
-
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
+    .container{width:100%;max-width:1200px;margin:0 auto}
+    .top{display:flex;align-items:center;gap:18px;margin-bottom:30px}
+    .logo{
+      width:78px;height:78px;border-radius:50%;
+      background:linear-gradient(135deg,#fff,#dbeafe);color:#0d47a1;
+      display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:bold;letter-spacing:1px
     }
-
-    .top {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 30px;
+    .brand h1{font-size:34px;margin-bottom:4px}
+    .brand p{color:#e5efff}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    .hero-text h2{font-size:56px;line-height:1.15;margin-bottom:18px}
+    .hero-text p{font-size:21px;max-width:700px;color:#eef6ff;margin-bottom:28px}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:20px}
+    .mini{
+      background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.2);
+      border-radius:14px;padding:16px;text-align:center
     }
-
-    .logo {
-      width: 78px;
-      height: 78px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #fff, #dbeafe);
-      color: #0d47a1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      font-weight: bold;
-      letter-spacing: 1px;
+    .mini h3{font-size:26px;margin-bottom:6px}
+    .panel{background:#fff;color:var(--text);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px}
+    .panel h3{color:var(--primary);font-size:28px;margin-bottom:10px}
+    .panel p{color:var(--muted);margin-bottom:20px}
+    .action-box{display:grid;gap:16px}
+    .action-card{border:1px solid #e5e7eb;border-radius:16px;padding:18px;background:#f9fbff}
+    .action-card h4{color:var(--primary);margin-bottom:8px;font-size:22px}
+    .action-card p{margin-bottom:14px}
+    .btn{
+      display:inline-block;padding:12px 22px;border-radius:10px;text-decoration:none;
+      font-weight:700;border:none;cursor:pointer
     }
-
-    .brand h1 {
-      font-size: 34px;
-      margin-bottom: 4px;
+    .btn-parent{background:var(--accent);color:#fff}
+    .btn-parent:hover{background:var(--accent-dark)}
+    .btn-admin{background:var(--primary);color:#fff}
+    .btn-admin:hover{background:#0b3d91}
+    .footer-note{margin-top:20px;color:#dbeafe;font-size:14px}
+    @media (max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-text h2{font-size:40px}
     }
-
-    .brand p {
-      color: #e5efff;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .hero-text h2 {
-      font-size: 56px;
-      line-height: 1.15;
-      margin-bottom: 18px;
-    }
-
-    .hero-text p {
-      font-size: 21px;
-      max-width: 700px;
-      color: #eef6ff;
-      margin-bottom: 28px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-top: 20px;
-    }
-
-    .mini {
-      background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 14px;
-      padding: 16px;
-      text-align: center;
-    }
-
-    .mini h3 {
-      font-size: 26px;
-      margin-bottom: 6px;
-    }
-
-    .panel {
-      background: white;
-      color: var(--text);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 28px;
-    }
-
-    .panel h3 {
-      color: var(--primary);
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .panel p {
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    .action-box {
-      display: grid;
-      gap: 16px;
-    }
-
-    .action-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 18px;
-      background: #f9fbff;
-    }
-
-    .action-card h4 {
-      color: var(--primary);
-      margin-bottom: 8px;
-      font-size: 22px;
-    }
-
-    .action-card p {
-      margin-bottom: 14px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-parent {
-      background: var(--accent);
-      color: white;
-    }
-
-    .btn-parent:hover {
-      background: var(--accent-dark);
-    }
-
-    .btn-admin {
-      background: var(--primary);
-      color: white;
-    }
-
-    .btn-admin:hover {
-      background: #0b3d91;
-    }
-
-    .footer-note {
-      margin-top: 20px;
-      color: #dbeafe;
-      font-size: 14px;
-    }
-
-    @media (max-width: 900px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-text h2 {
-        font-size: 40px;
-      }
-
-      .cards {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .cards {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-text h2 {
-        font-size: 32px;
-      }
-
-      .brand h1 {
-        font-size: 28px;
-      }
-
-      .top {
-        align-items: flex-start;
-      }
+    @media (max-width:640px){
+      .cards{grid-template-columns:1fr}
+      .hero-text h2{font-size:32px}
+      .brand h1{font-size:28px}
     }
   </style>
 </head>
@@ -242,31 +79,16 @@
         <div class="hero-text">
           <h2>Ota-ona va admin uchun alohida kabinet</h2>
           <p>
-            Portalda ota-ona o‘z bolasini maktabga ro‘yxatdan o‘tkazadi,
-            ariza yuboradi va qabul holatini tekshiradi. Admin esa barcha
-            yuborilgan arizalar va xabarlarni alohida kabinetda boshqaradi.
+            Ota-ona bolasini maktabga ro‘yxatdan o‘tkazadi, ariza yuboradi va holatini ko‘radi.
+            Admin esa barcha arizalarni va xabarlarni alohida panelda boshqaradi.
           </p>
 
           <div class="cards">
-            <div class="mini">
-              <h3>Ota-ona</h3>
-              <span>Ariza yuborish va holatni tekshirish</span>
-            </div>
-            <div class="mini">
-              <h3>Admin</h3>
-              <span>Arizalarni ko‘rish va boshqarish</span>
-            </div>
-            <div class="mini">
-              <h3>ID</h3>
-              <span>Avtomatik ariza raqami</span>
-            </div>
-            <div class="mini">
-              <h3>24/7</h3>
-              <span>Qulay onlayn tizim</span>
-            </div>
-          </div>
-
-          <p class="footer-note">
+            <div class="mini"><h3>Ota-ona</h3><span>Ariza yuborish va holatni tekshirish</span></div>
+            <div class="mini"><h3>Admin</h3><span>Arizalarni boshqarish</span></div>
+            <div class="mini"><h3>Firebase</h3><span>Bulutda saqlanadi</span></div>
+            <div class="mini"><h3>24/7</h3><span>Qulay online tizim</span></div>
+          </div><p class="footer-note">
             Aloqa: +998 99 039 56 02 | sharipovnodirbek618@gmail.com
           </p>
         </div>
@@ -278,19 +100,13 @@
           <div class="action-box">
             <div class="action-card">
               <h4>Ota-ona kabineti</h4>
-              <p>
-                Ariza topshirish, bola ma’lumotlarini kiritish,
-                maktabga ro‘yxatdan o‘tkazish va ariza holatini tekshirish.
-              </p>
+              <p>Ariza topshirish, ariza holatini tekshirish va xabar yuborish.</p>
               <a class="btn btn-parent" href="parent.html">Ota-ona kabinetiga kirish</a>
             </div>
 
             <div class="action-card">
               <h4>Admin kabineti</h4>
-              <p>
-                Yuborilgan arizalarni ko‘rish, status berish,
-                o‘chirish va yuborilgan xabarlarni ko‘rish.
-              </p>
+              <p>Barcha arizalarni ko‘rish, status berish, o‘chirish va xabarlarni ko‘rish.</p>
               <a class="btn btn-admin" href="admin.html">Admin kabinetiga kirish</a>
             </div>
           </div>
